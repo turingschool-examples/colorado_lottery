@@ -79,7 +79,7 @@ class ColoradoLotteryTest < MiniTest::Test
     @lottery.register_contestant(@winston, @mega_millions)
     assert_equal [@alexander, @frederick, @winston], @lottery.registered_contestants["Mega Millions"]
     assert_equal [@winston], @lottery.registered_contestants["Cash 5"]
-    assert_equal 3, @lottery.registered_contestant.keys.length
+    assert_equal 3, @lottery.registered_contestants.keys.length
   end
 
 end
