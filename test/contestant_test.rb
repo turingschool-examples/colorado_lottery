@@ -30,17 +30,18 @@ class ContestantTest < Minitest::Test
     assert_equal false, @alexander.out_of_state?
   end
 
+  def test_it_returns_game_interests
+    assert_equal [], exander.game_interests
+    @alexander.add_game_interest('Mega Millions')
+    @alexander.add_game_interest('Pick 4')
+    assert_equal ['Mega Millions', 'Pick 4'], @alexander.game_interests
+  end
+
 end
 
 
 #
-# #=> false
-#
-#alexander.game_interests
 # #=> []
 #
-#alexander.add_game_interest('Mega Millions')
-#alexander.add_game_interest('Pick 4')
 #
-#alexander.game_interests
 # => ["Mega Millions", "Pick 4"]
