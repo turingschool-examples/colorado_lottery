@@ -40,13 +40,3 @@ class ContestantTest < Minitest::Test
     assert_equal ["Mega Millions", "Pick 4"], @alexander.game_interests
   end
 end
-
-
-# pry(main)> alexander.game_interests
-# #=> []
-#
-# pry(main)> alexander.add_game_interest('Mega Millions')
-# pry(main)> alexander.add_game_interest('Pick 4')
-#
-# pry(main)> alexander.game_interests
-# => ["Mega Millions", "Pick 4"]
