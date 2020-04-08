@@ -134,7 +134,14 @@ class ColoradoLotteryTest < Minitest::Test
 
     assert_equal ({@cash_5 => ["Winston Churchill", "Grace Hopper"]}), @lottery.current_contestants
     assert_equal 19, @grace.spending_money
-    assert_equal 4, @winston.spending_money 
+    assert_equal 4, @winston.spending_money
+
+    @lottery.charge_contestants(@mega_millions)
+    assert_equal ({ @cash_5 => ["Winston Churchill", "Grace Hopper"], @mega_millions> => ["Alexander Aigades", "Frederick Douglas", "Grace Hopper"]}), lottery.current_contestants
+    assert_equal 14, grace.spending_money
+    assert_equal 4, winston.spending_money
+    assert_equal 5, alexander.spending_money
+    assert_equal 15, frederick.spending_money
   end
 
 end
