@@ -37,12 +37,12 @@ RSpec.describe 'Iteration 2' do
     @benjamin.add_game_interest('Mega Millions')
   end
 
-  it '1. ColoradoLottery Instantiation' do
+  it '2.1 ColoradoLottery Instantiation' do
     expect(ColoradoLottery).to respond_to(:new).with(0).argument
     expect(@lottery).to be_an_instance_of(ColoradoLottery)
   end
 
-  it '2. ColoradoLottery attrs' do
+  it '2.2 ColoradoLottery attrs' do
     expect(@lottery).to respond_to(:registered_contestants)
      .with(0).argument
     expect(@lottery.registered_contestants).to eq({})
@@ -52,7 +52,7 @@ RSpec.describe 'Iteration 2' do
     expect(@lottery.current_contestants).to eq({})
   end
 
-  it '3. ColoradoLottery interested_and_18?' do
+  it '2.3 ColoradoLottery interested_and_18?' do
     expect(@lottery).to respond_to(:interested_and_18?).with(2).argument
     expect(@lottery.interested_and_18?(@alexander, @pick_4))
     .to eq(true)
@@ -62,7 +62,7 @@ RSpec.describe 'Iteration 2' do
     .to eq(false)
   end
 
-  it '4. ColoradoLottery can_register?' do
+  it '2.4 ColoradoLottery can_register?' do
     expect(@lottery).to respond_to(:can_register?).with(2).argument
     expect(@lottery.can_register?(@alexander, @pick_4)).to eq(true)
     expect(@lottery.can_register?(@alexander, @cash_5)).to eq(false)
@@ -70,5 +70,4 @@ RSpec.describe 'Iteration 2' do
     expect(@lottery.can_register?(@benjamin, @mega_millions)).to eq(false)
     expect(@lottery.can_register?(@frederick, @cash_5)).to eq(false)
   end
-  
 end

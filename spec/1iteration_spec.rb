@@ -23,7 +23,7 @@ RSpec.describe 'Iteration 1' do
     @mega_millions = Game.new('Mega Millions', 5, true)
   end
 
-  it '1. Contestant Instantiation' do
+  it '1.1 Contestant Instantiation' do
     expect(Contestant).to respond_to(:new).with(1).argument
     expect(@alexander).to be_an_instance_of(Contestant)
     expect(@alexander).to respond_to(:full_name).with(0).argument
@@ -38,20 +38,20 @@ RSpec.describe 'Iteration 1' do
     expect(@alexander.game_interests).to eq([])
   end
 
-  it '2. Contestant out_of_state?' do
+  it '1.2 Contestant out_of_state?' do
     expect(@frederick).to respond_to(:out_of_state?).with(0).argument
     expect(@frederick.out_of_state?).to eq(true)
     expect(@winston.out_of_state?).to eq(false)
   end
 
-  it '3. Contestant game_interests' do
+  it '1.3 Contestant game_interests' do
     expect(@alexander).to respond_to(:add_game_interest).with(1).argument
     @alexander.add_game_interest('Mega Millions')
     @alexander.add_game_interest('Pick 4')
     expect(@alexander.game_interests).to eq(["Mega Millions", "Pick 4"])
   end
 
-  it '4. Game Instantiation' do
+  it '1.4 Game Instantiation' do
     expect(Game).to respond_to(:new).with(2).argument
     expect(Game).to respond_to(:new).with(3).argument
     expect(@pick_4).to be_an_instance_of(Game)
@@ -61,7 +61,7 @@ RSpec.describe 'Iteration 1' do
     expect(@pick_4.cost).to eq(2)
   end
 
-  it '5. Game #national_drawing?' do
+  it '1.5 Game #national_drawing?' do
     expect(@pick_4).to respond_to(:national_drawing?).with(0).argument
     expect(@mega_millions.national_drawing?).to eq(true)
     expect(@pick_4.national_drawing?).to eq(false)

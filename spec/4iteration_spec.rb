@@ -2,7 +2,7 @@ require "./lib/contestant"
 require "./lib/game"
 require "./lib/colorado_lottery"
 
-RSpec.describe 'Iteration 3' do
+RSpec.describe 'Iteration 4' do
 
   before :each do
     @alexander = Contestant.new({first_name: 'Alexander',
@@ -90,7 +90,7 @@ RSpec.describe 'Iteration 3' do
 
     expected = "Frederick Douglas won the Mega Millions on #{expected_date}"
     expect(@lottery.announce_winner("Mega Millions")).to eq(expected)
-    
+
     expected = "Winston Churchill won the Cash 5 on #{expected_date}"
     expect(@lottery.announce_winner("Cash 5")).to eq(expected)
   end
