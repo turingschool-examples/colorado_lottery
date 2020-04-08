@@ -20,4 +20,17 @@ class ColoradoLottery
   end
   end
 
+  def can_register?(contestant, game)
+    if interested_and_18?(contestant, game) == true && game.name == "Mega Millions" && contestant.age >= 18
+      true
+    elsif interested_and_18?(contestant, game) == true && game.name == "Cash 5" && contestant.state_of_residence == 'CO'
+      true
+    elsif interested_and_18?(contestant, game) == true && game.name == "Pick 4" && contestant.state_of_residence == 'CO'
+      true
+    else
+      false
+    end
+  end
+
+
 end
