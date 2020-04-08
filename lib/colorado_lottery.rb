@@ -5,4 +5,8 @@ class ColoradoLottery
     @winners = []
     @current_contestants = {}
   end
+
+  def interested_and_18?(contestant, game)
+    return true if contestant.age >= 18 && contestant.game_interests.find(game)
+  end
 end
