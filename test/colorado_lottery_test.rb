@@ -84,8 +84,21 @@ class ColoradoLotteryTest < Minitest::Test
     @benjamin.add_game_interest('Mega Millions')
 
     @lottery.register_contestant(@alexander, @pick_4)
-    result = {"Pick 4" => @alexander}
+    result = {"Pick 4" => [@alexander]}
     assert_equal result, @lottery.registered_contestants
+    @lottery.register_contestant(@alexander, @mega_millions)
+
+    result2 = {"Pick 4" => [@alexander], "Mega Millions" => [@alexander]}
+    assert_equal result2, @lottery.registered_contestants
+
+    @lottery.register_contestant(@frederick, @mega_millions)
+    @lottery.register_contestant(@winston, @cash_5)
+    @lottery.register_contestant(@winston, @mega_millions)
+
+    result3 = { "Pick 4" => [@alexander],
+                "Mega Millions" => [@alexander, @frederick, @winston],
+                "Cash 5" => [@winston]}
+    assert_equal result3, @lottery.registered_contestants
   end
 
 end
