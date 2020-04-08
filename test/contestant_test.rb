@@ -21,6 +21,17 @@ class ContestantTest < Minitest::Test
     assert_equal 10, @alexander.spending_money
     assert_equal [], @alexander.game_interests
   end
+
+  def test_it_can_tell_if_contestant_is_out_of_state
+    jeff = Contestant.new({first_name: "Jeff",
+                                          last_name: 'Smith',
+                                          age: 30,
+                                          state_of_residence: 'TX',
+                                          spending_money: 12})
+
+    assert_equal false, @alexander.out_of_state?
+    assert_equal true, jeff.out_of_state?
+  end
 end
 
 
