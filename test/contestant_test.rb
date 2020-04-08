@@ -28,6 +28,8 @@ class ContestantTest < Minitest::Test
     assert_equal 'Alexander Aigiades', @alexander.full_name
   end
 
-  #def test_out_of_state
+  def test_out_of_state
+      assert_equal false, @alexander.out_of_state?
+  end
 
 end
