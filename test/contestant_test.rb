@@ -9,8 +9,17 @@ class ContestantTest < MiniTest::Test
   def test_it_exists
     pick_4 = Game.new('Pick 4', 2)
     assert_instance_of Game, pick_4
+  end
+
+  def test_it_has_attributes
+    pick_4 = Game.new('Pick 4', 2)
+    mega_millions = Game.new('Mega Millions', 5, true)
+    assert_equal 'Mega Millions', mega_millions.name
+    assert_equal 5, mega_millions.cost
+    assert_equal true, mega_millions.national_drawing?
 
   end
+
 
 end
 
@@ -19,28 +28,7 @@ end
 
 
 
-# Use TDD to create a `Game` and `Contestant` class that respond to the following interaction pattern:
-# A contestant is considered out of state if their state of residence is not Colorado.
-#
-# ```ruby
-# pry(main)> require "./lib/contestant"
-# #=> true
-#
-# pry(main)> require "./lib/game"
-# #=> true
-#
-# pry(main)> pick_4 = Game.new('Pick 4', 2)
-# #=> #<Game:0x007f96c296b7b0...>
-#
-# pry(main)> mega_millions = Game.new('Mega Millions', 5, true)
-# #=> #<Game:0x007f96c2953278...>
-#
-# pry(main)> mega_millions.name
-# #=> "Mega Millions"
-#
-# pry(main)> mega_millions.cost
-# #=> 5
-#
+
 # pry(main)> mega_millions.national_drawing?
 # #=> true
 #
