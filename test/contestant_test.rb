@@ -37,5 +37,14 @@ class ConstantTest < MiniTest::Test
                                       state_of_residence: 'CO',
                                       spending_money: 10})
 
-    assert_instance of Contestant, alexander
+    assert_instance_of Contestant, alexander
   end
+
+  def test_contestant_has_attributes
+    alexander = Contestant.new({first_name: 'Alexander',
+                                      last_name: 'Aigiades',
+                                      age: 28,
+                                      state_of_residence: 'CO',
+                                      spending_money: 10})
+    assert_equal "Alexander Aigiades", alexander.full_name
+  end                               
