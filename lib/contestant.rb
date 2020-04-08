@@ -6,6 +6,6 @@ class Contestant
       @last_name = info[:last_name]
       @age = info[:age]
       @state_of_residence = info[:state_of_residence]
-      @spending_mone = info[:spending_money]
+      @spending_money = info[:spending_money]
     end
   end
