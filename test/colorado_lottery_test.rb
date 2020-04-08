@@ -141,7 +141,26 @@ class ColoradoLotteryTest < MiniTest::Test
       benjamin.add_game_interest('Mega Millions')
       lottery.register_contestant(alexander, pick_4)
 
-      assert_equal ({'Pick 4'=> alexander}), lottery.registered_contestants
+      assert_equal ({'Pick 4'=> [alexander]}), lottery.registered_contestants
+      lottery.register_contestant(frederick, mega_millions)
+      lottery.register_contestant(winston, cash_5)
+      lottery.register_contestant(winston, mega_millions)
+      assert_equal ({'Pick4'=> [alexander], "Mega Millions"=>[frederick,winston], "Cash 5"=>[winston]}), lottery.registered_contestants
+      grace = Contestant.new({
+                     first_name: 'Grace',
+                     last_name: 'Hopper',
+                     age: 20,
+                     state_of_residence: 'CO',
+                     spending_money: 20})
+     grace.add_game_interest('Mega Millions')
+     grace.add_game_interest('Cash 5')
+     grace.add_game_interest('Pick 4')
+     lottery.register_contestant(grace, mega_millions)
+     lottery.register_contestant(grace, cash_5)
+     lottery.register_contestant(grace, pick_4)
+     assert_equal ({{'Pick4'=> [alexander,grace], "Mega Millions"=>[frederick,winston,grace], "Cash 5"=>[winston,grace]}), lottery.registered_contestants
     end
+
+
 
 end
