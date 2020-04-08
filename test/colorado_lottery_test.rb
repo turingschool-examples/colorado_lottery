@@ -19,10 +19,11 @@ class ColoradoLotteryTest < Minitest::Test
   end
 
   def test_if_they_are_interested_and_18
-  pick_4 = Game.new('Pick 4', 2)
-  mega_millions = Game.new('Mega Millions', 5, true)
-  cash_5 = Game.new('Cash 5', 1)
-  alexander = Contestant.new({
+    lottery = ColoradoLottery.new
+    pick_4 = Game.new('Pick 4', 2)
+    mega_millions = Game.new('Mega Millions', 5, true)
+    cash_5 = Game.new('Cash 5', 1)
+    alexander = Contestant.new({
              first_name: 'Alexander',
              last_name: 'Aigades',
              age: 28,
@@ -52,7 +53,9 @@ class ColoradoLotteryTest < Minitest::Test
   winston.add_game_interest('Cash 5')
   winston.add_game_interest('Mega Millions')
   benjamin.add_game_interest('Mega Millions')
-  assert_equal true, lottery.interested_and_18?(benjamin, mega_millions)
+
+  assert_equal true, lottery.interested_and_18?(alexander, pick_4)
+  assert_equal false, lottery.interested_and_18?(benjamin, mega_millions)
   assert_equal false, lottery.interested_and_18?(alexander, cash_5)
 end
 end
