@@ -103,6 +103,22 @@ class GameTest < Minitest::Test
     assert_equal expected, @lottery.registered_contestants
   end
 
+  def test_it_can_get_eligible_contestants
+    @alexander.add_game_interest('Pick 4')
+    @alexander.add_game_interest('Mega Millions')
+    @frederick.add_game_interest('Mega Millions')
+    @winston.add_game_interest('Cash 5')
+    @winston.add_game_interest('Mega Millions')
+    @benjamin.add_game_interest('Mega Millions')
+    @lottery.register_contestant(@alexander, @pick_4)
+    @lottery.register_contestant(@alexander, @mega_millions)
+    @lottery.register_contestant(@frederick, @mega_millions)
+    @lottery.register_contestant(@winston, @cash_5)
+    @lottery.register_contestant(@winston, @mega_millions)
+
+    assert_equal [@alexander], @lottery.eligible_contestants(@pick_4)
+  end
+
 end
 
 # - Use TDD to update your `Lottery` class so that it responds to the following interaction pattern.
