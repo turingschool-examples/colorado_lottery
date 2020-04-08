@@ -26,7 +26,13 @@ class ColoradoLottery
   def eligible_contestants(game)
     eligible_contestants = Hash.new { |h, k| h[k] = [] }
     eligible_contestants[game.name] = @registered_contestants[game.name].find_all do |contestant|
-      contestant.spending_money = game.cost
+      contestant.spending_money >= game.cost
+    end
+  end
+
+  def charge_contestants(game)
+    eligible_contestants(game).each do |contestant|
+      contestant.buy_game(game)
     end
   end
 end
