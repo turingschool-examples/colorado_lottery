@@ -11,6 +11,24 @@ class ColoradoLotteryTest < Minitest::Test
 
     assert_instance_of ColoradoLottery, lottery
   end
+
+  def test_registered_contenstants_is_empty_hash
+    lottery = ColoradoLottery.new
+
+    assert_equal ({}), lottery.registered_contestants
+  end
+
+  def test_winners_is_empty_array
+    lottery = ColoradoLottery.new
+
+    assert_equal [], lottery.winners
+  end
+
+  def test_current_contestants_is_empty_hash
+    lottery = ColoradoLottery.new
+
+    assert_equal ({}), lottery.current_contestants
+  end
 end
 
 
