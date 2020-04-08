@@ -78,7 +78,7 @@ class ColoradoLotteryTest < MiniTest::Test
   end
 
   def test_register_contestant
-    @lottery.registered_contestant(@alexander, @pick_4)
+    @lottery.register_contestant(@alexander, @pick_4)
     expected = {"Pick 4" => [@alexander]}
     assert_equal expected, @lottery.registered_contestants
 
