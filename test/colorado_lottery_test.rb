@@ -61,4 +61,15 @@ class ColoradoLotteryTest < Minitest::Test
     expected_current_hash = {}
     assert_equal expected_current_hash, @lottery.current_contestants
   end
+
+  def test_add_game_interests
+    @alexander.add_game_interest('Pick 4')
+    @alexander.add_game_interest('Mega Millions')
+    @frederick.add_game_interest('Mega Millions')
+    @winston.add_game_interest('Cash 5')
+    @winston.add_game_interest('Mega Millions')
+    @benjamin.add_game_interest('Mega Millions')
+    
+  end
+
 end
