@@ -24,4 +24,8 @@ class ContestantTest < MiniTest::Test
     assert_equal 10, @alexander.spending_money
   end
 
+  def test_out_of_state
+    assert_equal false, @alexander.out_of_state?
+  end
+
 end
