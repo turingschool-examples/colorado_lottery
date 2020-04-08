@@ -114,25 +114,5 @@ class ColoradoLotteryTest < Minitest::Test
     assert_equal true, lottery.can_register?(frederick, mega_millions)
     assert_equal false, lottery.can_register?(benjamin, mega_millions)
     assert_equal false, lottery.can_register?(frederick, cash_5)
-
   end
 end
-
-
-# ### Iteration 2
-#
-# Use TDD to create a ColoradoLottery class that responds to the following interaction pattern.
-#
-# - A contestant #can_register? if they are interested in the game, 18 years of age
-# or older, and they are either a Colorado resident or this is a national game
-
-
-# #=> true
-#
-# #=> false
-#
-# #=> true
-#
-# #=> false
-#
-# #=> false
