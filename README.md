@@ -39,10 +39,10 @@ pry(main)> pick_4.national_drawing?
 #=> false
 
 pry(main)> alexander = Contestant.new({first_name: 'Alexander',
-                                      last_name: 'Aigiades',
-                                      age: 28,
-                                      state_of_residence: 'CO',
-                                      spending_money: 10})
+'Aigiades',
+age: 28,
+'CO',
+ney: 10})
 #=> <Contestant:0x007ff87ac0a498...>
 
 pry(main)> alexander.full_name
