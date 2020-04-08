@@ -114,5 +114,29 @@ class GameTest < Minitest::Test
     assert_equal ({"Pick 4" => alexander}), lottery.registered_contestants
   end
 
+  def test_it_can_list_eligile_contestants
+    pick_4 = Game.new('Pick 4', 2)
+    mega_millions = Game.new('Mega Millions', 5, true)
+    cash_5 = Game.new('Cash 5', 1)
+    alexander = Contestant.new({
+                          first_name: 'Alexander',
+                          last_name: 'Aigades',
+                          age: 28,
+                          state_of_residence: 'CO',
+                          spending_money: 10})
+  benjamin = Contestant.new({
+                            first_name: 'Benjamin',
+                             last_name: 'Franklin',
+                            age: 17,
+                            state_of_residence: 'PA',
+                            spending_money: 100})
+
+    lottery = ColoradoLottery.new
+    lottery.register_contestant(alexander, pick_4)
+    lottery.register_contestant(benjamin, pick_4)
+
+    assert_equal ({alexander => pick_4}), lottery.eligible_contestants(pick_4)
+  end
+
 
 end

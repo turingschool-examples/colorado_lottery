@@ -39,7 +39,11 @@ class ColoradoLottery
   def register_contestant(name, game)
     if can_register?(name, game) == true
       @registered_contestants[game.name] = name
-    end 
+    end
+  end
+
+  def eligible_contestants(game)
+    binding.pry
   end
 
 
