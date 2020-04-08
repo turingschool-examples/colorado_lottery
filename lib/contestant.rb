@@ -19,4 +19,8 @@ class Contestant
     end
   end
 
+  def add_game_interest(game)
+    @game_interests << game 
+  end
+
 end

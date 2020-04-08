@@ -40,5 +40,19 @@ class ContestantTest < Minitest::Test
     assert_equal false, alexander.out_of_state?(alexander)
   end
 
+  def test_it_can_add_games_of_interest_to_array
+    alexander = Contestant.new({first_name: 'Alexander',
+                                          last_name: 'Aigiades',
+                                          age: 28,
+                                          state_of_residence: 'CO',
+                                          spending_money: 10})
+    alexander.add_game_interest('Mega Millions')
+    alexander.add_game_interest('Pick 4')
+
+    assert_equal ["Mega Millions", "Pick 4"], alexander.game_interests
+  end
+
+
+
 
 end
