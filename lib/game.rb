@@ -7,4 +7,8 @@ attr_reader :name, :cost
     @nat_draw = nat_draw
   end
 
+  def national_drawing?
+    @nat_draw
+  end
+
 end
