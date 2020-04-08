@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/contestant'
+require './lib/game'
 
 class ContestantTest < Minitest::Test
 
@@ -33,4 +34,12 @@ class ContestantTest < Minitest::Test
       assert_equal false, @alexander.out_of_state?
   end
 
+  def test_add_game_interest
+    mega_millions = Game.new('Mega Millions', 5, true)
+    pick_4 = Game.new('Pick 4', 2, false)
+    assert_equal [], @alexander.game_interest
+    @alexander.add_game_interest(pick_4)
+    @alexander.add_game_interest(mega_millions)
+    assert_equal [pick_4, mega_millions], @alexander.game_interest
+  end
 end
