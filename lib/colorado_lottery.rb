@@ -20,7 +20,7 @@ class ColoradoLottery
   end
 
   def interested_and_18?(name, game_interest)
-    if name.age >= 18 || find_game_interest(name, game_interest) == true 
+    if name.age >= 18 || find_game_interest(name, game_interest) == true
       true
     else
       false
@@ -33,6 +33,13 @@ class ColoradoLottery
     else
       false
     end
+  end
+
+
+  def register_contestant(name, game)
+    if can_register?(name, game) == true
+      @registered_contestants[game.name] = name
+    end 
   end
 
 
