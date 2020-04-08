@@ -27,4 +27,13 @@ class ContestantTest < Minitest::Test
     assert_equal 10, alexander.spending_money
   end
 
+  def test_out_of_state?
+    alexander = Contestant.new({first_name: 'Alexander',
+                                last_name: 'Aigiades',
+                                age: 28,
+                                state_of_residence: 'CO',
+                                spending_money: 10})
+    assert_equal false, alexander.out_of_state?
+  end
+
 end
