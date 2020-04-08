@@ -10,7 +10,7 @@ class ColoradoLotteryTest < Minitest::Test
   def setup
     @lottery = ColoradoLottery.new
     @pick_4 = Game.new('Pick 4', 2)
-    @mega_millions = Game.new('Mega Millions', 5, true)
+    @mega_millions = Game.new('Mega Millions', 5, true )
     @cash_5 = Game.new('Cash 5', 1)
     @alexander = Contestant.new({
                        first_name: 'Alexander',
