@@ -75,11 +75,12 @@ class ColoradoLotteryTest < Minitest::Test
   end
 
   def test_register_contestant
+  
     @lottery.register_contestant(@alexander, @pick_4)
     expected = {"Pick 4" => [@alexander]}
     assert_equal expected, @lottery.registered_contestants
 
-    @lottery.register_contestant(alexander, mega_millions)
+    @lottery.register_contestant(@alexander, @mega_millions)
     expected2 = {"Pick 4" => [@alexander],"Mega Millions" => [@alexander]}
     assert_equal expected2, @lottery.registered_contestants
 
@@ -88,27 +89,58 @@ class ColoradoLotteryTest < Minitest::Test
     @lottery.register_contestant(@winston, @mega_millions)
     expected3 = {"Pick 4"=>[@alexander],"Mega Millions"=>[@alexander, @frederick, @winston],"Cash 5" =>[@winston]}
     assert_equal expected3, @lottery.registered_contestants
+
+    grace = Contestant.new({
+      first_name: 'Grace',
+      last_name: 'Hopper',
+      age: 20,
+      state_of_residence: 'CO',
+      spending_money: 20})
+
+    assert_instance_of Contestant, grace
+
+    grace.add_game_interest('Mega Millions')
+    grace.add_game_interest('Cash 5')
+    grace.add_game_interest('Pick 4')
+    @lottery.register_contestant(grace, @mega_millions)
+    @lottery.register_contestant(grace, @cash_5)
+    @lottery.register_contestant(grace, @pick_4)
+
+    expected4 = {"Pick 4"=>[@alexander, grace],"Mega Millions"=>[@alexander, @frederick, @winston, grace],"Cash 5" =>[@winston, grace]}
+    assert_equal expected4, @lottery.registered_contestants
+
+  end
+
+  def test_eligible_contestants
+
+    grace = Contestant.new({
+      first_name: 'Grace',
+      last_name: 'Hopper',
+      age: 20,
+      state_of_residence: 'CO',
+      spending_money: 20})
+
+    assert_instance_of Contestant, grace
+
+    @lottery.register_contestant(@alexander, @pick_4)
+    @lottery.register_contestant(@alexander, @mega_millions)
+    @lottery.register_contestant(@frederick, @mega_millions)
+    @lottery.register_contestant(@winston, @cash_5)
+    @lottery.register_contestant(@winston, @mega_millions)
+
+    grace.add_game_interest('Mega Millions')
+    grace.add_game_interest('Cash 5')
+    grace.add_game_interest('Pick 4')
+    @lottery.register_contestant(grace, @mega_millions)
+    @lottery.register_contestant(grace, @cash_5)
+    @lottery.register_contestant(grace, @pick_4)
+
+    assert_equal [@alexander, grace], @lottery.eligible_contestants(@pick_4)
   end
 
 
- # pry(main)> grace = Contestant.new({
- #                      first_name: 'Grace',
- #                      last_name: 'Hopper',
- #                      age: 20,
- #                      state_of_residence: 'CO',
- #                      spending_money: 20})
- # #=> #<Contestant:0x007ffe99998190...>
- #
- # pry(main)> grace.add_game_interest('Mega Millions')
- # pry(main)> grace.add_game_interest('Cash 5')
- # pry(main)> grace.add_game_interest('Pick 4')
- # pry(main)> lottery.register_contestant(grace, mega_millions)
- # pry(main)> lottery.register_contestant(grace, cash_5)
- # pry(main)> lottery.register_contestant(grace, pick_4)
- #
- # lottery.registered_contestants
- # #=> {"Pick 4"=> [#<Contestant:0x007f8a3251c390>, #<Contestant:0x007ffe99998190...>], "Mega Millions" => [#<Contestant:0x007f8a3251c390...>, #<Contestant:0x007f8a325a6c98...>, #<Contestant:0x007f8a33092c10...>, #<Contestant:0x007ffe99998190...>], "Cash 5" => [#<Contestant:0x007f8a33092c10...>, #<Contestant:0x007ffe99998190...>]}
- #
+
+
  # pry(main)> lottery.eligible_contestants(pick_4)
  # #=> [#<Contestant:0x007ffe95fab0b8...>,
  #  #<Contestant:0x007ffe99998190...>]
