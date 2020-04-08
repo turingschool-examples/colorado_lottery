@@ -8,4 +8,8 @@ class Contestant
       @state_of_residence = info[:state_of_residence]
       @spending_money = info[:spending_money]
     end
-  end
+
+    def full_name
+      @first_name + " " + @last_name
+    end
+end
