@@ -4,7 +4,8 @@ class Contestant
               :full_name,
               :age,
               :state_of_residence,
-              :spending_money
+              :spending_money,
+              :game_interests
 
   def initialize(contestant_info)
     @contestant_info = contestant_info
@@ -14,6 +15,7 @@ class Contestant
     @age = contestant_info[:age]
     @state_of_residence = contestant_info[:state_of_residence]
     @spending_money = contestant_info[:spending_money]
+    @game_interests = []
   end
 
   def out_of_state?
