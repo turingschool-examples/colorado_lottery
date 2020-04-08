@@ -1,22 +1,15 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/contestant'
+require './lib/game'
 
 
-class ContestantTest < Minitest::Test 
-
+class GameTest < Minitest::Test
+  def setup
+    @pick_4 = Game.new('Pick 4', 2)
+    @mega_millions = Game.new('Mega Millions', 5, true)
+  end
 end
 
-# Use TDD to create a `Game` and `Contestant` class that respond to the following interaction pattern:
-# A contestant is considered out of state if their state of residence is not Colorado.
-#
-# ```ruby
-# pry(main)> require "./lib/contestant"
-# #=> true
-#
-# pry(main)> require "./lib/game"
-# #=> true
-#
 # pry(main)> pick_4 = Game.new('Pick 4', 2)
 # #=> #<Game:0x007f96c296b7b0...>
 #
