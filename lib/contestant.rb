@@ -9,4 +9,8 @@ class Contestant
     @spending_money = init_hash[:spending_money]
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
 end
