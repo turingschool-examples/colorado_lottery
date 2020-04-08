@@ -65,20 +65,17 @@ class ColoradoLotteryTest < Minitest::Test
   def test_it_returns_if_contenst_can_register_locally
     @alexander.add_game_interest('Pick 4')
     assert_equal true, @lottery.local_register?(@alexander, @pick_4)
-
   end
 
   def test_it_returns_if_contestant_can_register
-    skip
+    @alexander.add_game_interest('Pick 4')
     assert_equal true, @lottery.can_register?(@alexander, @pick_4)
     assert_equal false, @lottery.can_register?(@alexander, @cash_5)
-#
-#     lottery.can_register?(frederick, mega_millions)
-# #=> true
-#
-# pry(main)> lottery.can_register?(benjamin, mega_millions)
-# #=> false
-#
-# pry(main)> lottery.can_register?(frederick, cash_5)
+
+    @frederick.add_game_interest('Mega Millions')
+    assert_equal true, @lottery.can_register?(@frederick, @mega_millions)
+
+    assert_equal false, @lottery.can_register?(@benjamin, @mega_millions)
+    assert_equal false, @lottery.can_register?(@frederick, @cash_5)
   end
 end

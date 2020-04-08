@@ -7,7 +7,7 @@ class ColoradoLottery
   end
 
   def interested_and_18?(contestant, game)
-      contestant.game_interests.include?(game.name) && at_least_18?(contestant)
+     contestant.game_interests.include?(game.name) && at_least_18?(contestant)
   end
 
   def at_least_18?(contestant)
@@ -15,10 +15,12 @@ class ColoradoLottery
   end
 
   def can_register?(contestant, game)
-    if interested_and_18?(contestant, game) == true
-      if game.national_drawing? == true
+    if interested_and_18?(contestant, game) && local_register?(contestant, game)
         true
-      end
+    elsif interested_and_18?(contestant, game) && game.national_drawing?
+        true
+      else
+        false
     end
   end
 
@@ -26,8 +28,9 @@ class ColoradoLottery
     if interested_and_18?(contestant, game) == true
       if game.national_drawing? == false && contestant.out_of_state? == false
         true
+      else
+        false
       end
     end
   end
-
 end
