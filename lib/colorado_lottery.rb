@@ -34,7 +34,22 @@ class ColoradoLottery
 
   def register_contestant(contestant, game)
     if can_register?(contestant, game) == true
-      @registered_contestants[game.name] = contestant
+      if @registered_contestants[game.name]== nil
+        counter = []
+        @registered_contestants[game.name] = counter
+        counter << contestant
+      else
+        @registered_contestants[game.name] << contestant
+      end
+    end
+  end
+
+  def eligible_contestants(game)
+    eligible_contestants = []
+      @registered_contestants[game.name].each do |contestant|
+        if contestant.spending_money > game.cost
+          eligible_contestants << contestant
+      end
     end
   end
 
