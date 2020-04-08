@@ -35,17 +35,25 @@ class ContestantTest < Minitest::Test
                                 state_of_residence: 'CO',
                                 spending_money: 10})
 
-    assert_equal "Alexander Aigiades", alexander.full_name                            
+    assert_equal "Alexander Aigiades", alexander.full_name
   end
 
+  def tests_if_contestant_is_out_of_state
+    alexander = Contestant.new({first_name: 'Alexander',
+                                last_name: 'Aigiades',
+                                age: 28,
+                                state_of_residence: 'CO',
+                                spending_money: 10})
+    out_of_state_contestant = Contestant.new({first_name: 'Bill',
+                                last_name: 'Bob',
+                                age: 28,
+                                state_of_residence: 'MO',
+                                spending_money: 10})
 
+    assert_equal false, alexander.out_of_state?
+    assert_equal true, out_of_state_contestant.out_of_state?
+  end
 end
-
-
-
-
-
-
 
 
 
