@@ -8,5 +8,7 @@ class Contestant
     @spending_money = args[:spending_money]
   end
 
-  
+  def out_of_state?
+    @state_of_residence != "CO"
+  end
 end
