@@ -31,6 +31,7 @@ class ConstantTest < MiniTest::Test
   end
 
   def test_instance_of_contestant
+
     alexander = Contestant.new({first_name: 'Alexander',
                                       last_name: 'Aigiades',
                                       age: 28,
@@ -41,6 +42,7 @@ class ConstantTest < MiniTest::Test
   end
 
   def test_contestant_has_attributes
+    skip
     alexander = Contestant.new({first_name: 'Alexander',
                                       last_name: 'Aigiades',
                                       age: 28,
@@ -53,6 +55,7 @@ class ConstantTest < MiniTest::Test
   end
 
   def test_contestant_is_in_state_if_in_CO
+    skip
     alexander = Contestant.new({first_name: 'Alexander',
                                       last_name: 'Aigiades',
                                       age: 28,
@@ -63,6 +66,7 @@ class ConstantTest < MiniTest::Test
   end
 
   def test_contestant_starts_with_no_interests
+    skip
     alexander = Contestant.new({first_name: 'Alexander',
                                       last_name: 'Aigiades',
                                       age: 28,
@@ -73,6 +77,7 @@ class ConstantTest < MiniTest::Test
   end
 
   def test_contestant_can_add_game_interests
+    skip
     alexander = Contestant.new({first_name: 'Alexander',
                                       last_name: 'Aigiades',
                                       age: 28,
@@ -85,3 +90,4 @@ class ConstantTest < MiniTest::Test
 
     assert_equal ['Mega Millions', 'Pick 4'], alexander.game_interests
   end
+end
