@@ -46,4 +46,8 @@ class ColoradoLottery
       @current_contestants[game] << contestant.full_name
     end
   end
+
+  def draw_winners
+    #draw_winners method returns the date of the drawing as a string, and populates the #winners array with a random winner for each game based on available contestants
+  end
 end
