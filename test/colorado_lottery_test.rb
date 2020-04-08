@@ -141,7 +141,7 @@ class ColoradoLotteryTest < MiniTest::Test
       benjamin.add_game_interest('Mega Millions')
       lottery.register_contestant(alexander, pick_4)
 
-      assert_equal [alexander] lottery.registered_contestants
+      assert_equal ({'Pick 4'=> alexander}), lottery.registered_contestants
     end
 
 end
