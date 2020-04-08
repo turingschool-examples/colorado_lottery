@@ -10,7 +10,11 @@ class ColoradoLottery
   end
 
   def interested_and_18?(name, game_interest)
-
-  end 
+    if name.age >= 18
+      true
+    else
+      false
+    end
+  end
 
 end
