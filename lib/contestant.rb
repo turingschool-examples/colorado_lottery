@@ -7,7 +7,6 @@ class Contestant
     @age = info[:age]
     @spending_money = info[:spending_money]
     @state_of_residence = info[:state_of_residence]
-    @out_of_state = false
     @game_interests = []
   end
 
@@ -16,7 +15,7 @@ class Contestant
   end
 
   def out_of_state?
-    @out_of_state
+    @state_of_residence != 'CO'  
   end
 
   def add_game_interest(game)
