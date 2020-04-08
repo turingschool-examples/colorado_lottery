@@ -9,4 +9,13 @@ class GameTest < Minitest::Test
     pick_4 = Game.new('Pick 4', 2)
     assert_instance_of Game, pick_4
   end
+
+  def test_it_has_readable_attributes
+    pick_4 = Game.new('Pick 4', 2)
+    mega_millions = Game.new('Mega Millions', 5, true)
+    assert_equal "Mega Millions", mega_millions.name
+    assert_equal 5, mega_millions.cost 
+  end
+
+      #assert_equal true,mega_millions.national_drawing?
 end
