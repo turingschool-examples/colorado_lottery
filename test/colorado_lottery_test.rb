@@ -35,5 +35,30 @@ class ColoradoLotteryTest < Minitest::Test
                      age: 18,
                      state_of_residence: 'CO',
                      spending_money: 5})
-  end 
+  end
+
+  def test_it_exists
+    assert_instance_of ColoradoLottery, @lottery
+    assert_instance_of Game, @pick_4
+    assert_instance_of Game, @mega_millions
+    assert_instance_of Game, @cash_5
+    assert_instance_of Contestant, @alexander
+    assert_instance_of Contestant, @benjamin
+    assert_instance_of Contestant, @frederick
+    assert_instance_of Contestant, @winston
+  end
+
+  def test_it_has_no_registered_contestants
+    expected_contestant_hash = {}
+    assert_equal expected_contestant_hash, @lottery.registered_contestants
+  end
+
+  def test_it_has_no_winners
+    assert_equal [], @lottery.winners
+  end
+
+  def test_it_has_no_current_contestants
+    expected_current_hash = {}
+    assert_equal expected_current_hash, @lottery.current_contestants
+  end
 end
