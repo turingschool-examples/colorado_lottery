@@ -32,4 +32,8 @@ class ColoradoLottery
       end
     end
   end
+
+  def eligible_contestants(game)
+    @registered_contestants[game.name]
+  end 
 end
