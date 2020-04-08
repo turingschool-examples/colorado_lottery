@@ -18,4 +18,8 @@ class ColoradoLottery
     #18 years of age or older, and they are either a Colorado resident
     #or this is a national game
   end
+
+  # - `#eligible_contestants` is a list of all the contestants who have been registered to play a given game and that have more spending_money than the cost.
+  # - current_contestants are lists of contestant names who have been charged, organized by game.
+
 end
