@@ -33,4 +33,10 @@ class ContestantTest < Minitest::Test
   def test_game_interests_starts_empty
     assert_equal [], @alexander.game_interests
   end
+
+  def test_game_interests
+    @alexander.add_game_interest('Mega Millions')
+    @alexander.add_game_interest('Pick 4')
+    assert_equal ["Mega Millions", "Pick 4"], @alexander.game_interests
+  end
 end

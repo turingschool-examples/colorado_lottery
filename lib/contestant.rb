@@ -1,5 +1,5 @@
 class Contestant
-  attr_reader :first_name, :last_name, :age, :state_of_residence, :spending_money
+  attr_reader :first_name, :last_name, :age, :state_of_residence, :spending_money, :game_interests
 
   def initialize(attribute)
     @first_name         = attribute[:first_name]
@@ -19,7 +19,8 @@ class Contestant
     @out_of_state
   end
 
-  def game_interests
-    @game_interests
+  def add_game_interest(game_interest)
+    @game_interests << game_interest
   end
+
 end
