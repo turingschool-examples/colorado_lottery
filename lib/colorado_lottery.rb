@@ -35,4 +35,12 @@ class ColoradoLottery
       contestant.buy_game(game)
     end
   end
+
+  def current_contestants
+    current_contestants = Hash.new { |h, k| h[k] = [] }
+    #check if contestant has been charged. Maybe add method contestant to check if they have bought this game
+    eligible_contestants.keys.each do |game|
+      current_contestants[game.name] = charge_contestants
+  end
+
 end

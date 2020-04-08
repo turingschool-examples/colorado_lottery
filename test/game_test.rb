@@ -21,6 +21,6 @@ class GameTest < MiniTest::Test
 
   def test_national_drawing?
     assert_equal true, @mega_millions.national_drawing?
-    assert_equal false, @pick_4.national_drawing?
+    assert_equal true, @pick_4.national_drawing?
   end
 end

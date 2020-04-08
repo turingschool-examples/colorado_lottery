@@ -127,4 +127,21 @@ class ColoradoLotteryTest < MiniTest::Test
     assert_equal 19, @grace.spending_money
   end
 
+  def current_contestants
+    @lottery.register_contestant(@alexander, @pick_4)
+    @lottery.register_contestant(@alexander, @mega_millions)
+    @lottery.register_contestant(@frederick, @mega_millions)
+    @lottery.register_contestant(@winston, @cash_5)
+    @lottery.register_contestant(@winston, @mega_millions)
+    @lottery.register_contestant(@grace, @mega_millions)
+    @lottery.register_contestant(@grace, @cash_5)
+    @lottery.register_contestant(@grace, @pick_4)
+    @lottery.charge_contestants(@cash_5)
+    @lottery.charge_contestants(@mega_millions)
+    @lottery.charge_contestants(@pick_4)
+
+    expected = {"Pick 4" => [@alexander, @grace], "Mega Millions" => [@alexander, @frederick, @winston, @grace], "Cash 5" => [@winston, @grace]}
+    assert_equal expected, @lottery.current_contestants
+  end
+
 end
