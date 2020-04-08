@@ -22,4 +22,10 @@ class ColoradoLottery
       false
     end
   end
+
+  def register_contestant(contestant, game)
+    @registered_contestants[game.name] = contestant
+  end
+
+  def eligible_contestants(pick_4)
 end
