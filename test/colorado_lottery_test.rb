@@ -26,4 +26,18 @@ class ColoradoLotteryTest < Minitest::Test
     assert_equal ({}), @lottery.current_contestants
   end
 
+  def test_it_can_add_registered_contestants
+    pick_4 = Game.new('Pick 4', 2)
+
+    alexander = Contestant.new({
+                    first_name: 'Alexander',
+                    last_name: 'Aigades',
+                    age: 28,
+                    state_of_residence: 'CO',
+                    spending_money: 10})
+
+    alexander.add_game_interest('Pick 4')
+  
+    assert_equal true, @lottery.interested_and_18?(alexander, pick_4)
+  end
 end
