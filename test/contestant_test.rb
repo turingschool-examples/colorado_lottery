@@ -1,6 +1,5 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/game'
 require './lib/contestant'
 
 class ContestantTest < MiniTest::Test
