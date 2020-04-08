@@ -5,6 +5,6 @@ class Contestant
   def initialize(attributes)
     @full_name = attributes[:first_name] + " " + attributes[:last_name]
     @age = attributes[:age]
-    
+    @state_of_residence = attributes[:state_of_residence]
   end
 end
