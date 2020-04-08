@@ -152,8 +152,16 @@ class ColoradoLotteryTest < MiniTest::Test
       lottery.register_contestant(alexander, pick_4)
       expected = {"Pick 4"=> [alexander]}
       assert_equal expected, lottery.registered_contestants
+      lottery.register_contestant(alexander, mega_millions)
+      expected = {"Pick 4"=> [alexander], "Mega Millions"=> [alexander]}
+      assert_equal expected, lottery.registered_contestants
+      lottery.register_contestant(frederick, mega_millions)
+      lottery.register_contestant(winston, cash_5)
+      lottery.register_contestant(winston, mega_millions)
+      expected = {"Pick 4"=> [alexander], "Mega Millions" => [alexander, frederick, winston], "Cash 5" => [winston]}
+      assert_equal expected, lottery.registered_contestants
       
-
+end
 end
 
 
@@ -167,20 +175,8 @@ end
 # - `#eligible_contestants` is a list of all the contestants who have been registered to play a given game and that have more spending_money than the cost.
 # - current_contestants are lists of contestant names who have been charged, organized by game.
 #
-# ```ruby
-# pry(main)> lottery.register_contestant(alexander, pick_4)
-#
-# pry(main)> lottery.registered_contestants
-# #=> {"Pick 4"=> [#<Contestant:0x007f8a3251c390...>]}
-#
-# pry(main)> lottery.register_contestant(alexander, mega_millions)
-#
-# pry(main)> lottery.registered_contestants
-# #=> {"Pick 4"=> [#<Contestant:0x007f8a3251c390...>], "Mega Millions"=> [#<Contestant:0x007f8a3251c390...>]}
-#
-# pry(main)> lottery.register_contestant(frederick, mega_millions)
-# pry(main)> lottery.register_contestant(winston, cash_5)
-# pry(main)> lottery.register_contestant(winston, mega_millions)
+
+
 #
 # pry(main)> lottery.registered_contestants
 # #=> {"Pick 4"=> [#<Contestant:0x007f8a3251c390>], "Mega Millions" => [#<Contestant:0x007f8a3251c390...>, #<Contestant:0x007f8a325a6c98...>, #<Contestant:0x007f8a33092c10...>], "Cash 5" => [#<Contestant:0x007f8a33092c10...>]}

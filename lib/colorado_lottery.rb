@@ -17,7 +17,13 @@ class ColoradoLottery
   end
 
   def register_contestant(contestant, game)
-    require "pry";binding.pry
+    if registered_contestants[game.name] == nil
+      registered_contestants[game.name] = []
+      registered_contestants[game.name] << contestant
+    else
+      registered_contestants[game.name] << contestant
+
+    end
   end
 
 
