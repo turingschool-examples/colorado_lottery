@@ -134,7 +134,46 @@ class ColoradoLotteryTest < Minitest::Test
 
     @lottery.charge_contestants(@pick_4)
     assert_equal ({@cash_5 => ["Winston Churchill", "Grace Hopper"], @mega_millions => ["Alexander Aigades", "Frederick Douglas", "Grace Hopper"], @pick_4 => ["Alexander Aigades", "Grace Hopper"]}), @lottery.current_contestants
+  end
 
+  def test_winners
+    @lottery.register_contestant(@alexander, @pick_4)
+    @lottery.register_contestant(@alexander, @mega_millions)
+    @lottery.register_contestant(@frederick, @mega_millions)
+    @lottery.register_contestant(@winston, @cash_5)
+    @lottery.register_contestant(@winston, @mega_millions)
+    @lottery.register_contestant(@grace, @mega_millions)
+    @lottery.register_contestant(@grace, @cash_5)
+    @lottery.register_contestant(@grace, @pick_4)
+    @lottery.charge_contestants(@cash_5)
+    @lottery.charge_contestants(@mega_millions)
+    @lottery.charge_contestants(@pick_4)
+
+    assert_equal "2020-04-08", @lottery.draw_winners
+    assert_equal Array, @lottery.winners.class
+    assert_equal Hash, @lottery.winners.first.class
+    assert_equal Hash, @lottery.winners.last.class
+    assert_equal 3, @lottery.winners.length
+  end
+
+  def test_announce_winner
+    @lottery.register_contestant(@alexander, @pick_4)
+    @lottery.register_contestant(@alexander, @mega_millions)
+    @lottery.register_contestant(@frederick, @mega_millions)
+    @lottery.register_contestant(@winston, @cash_5)
+    @lottery.register_contestant(@winston, @mega_millions)
+    @lottery.register_contestant(@grace, @mega_millions)
+    @lottery.register_contestant(@grace, @cash_5)
+    @lottery.register_contestant(@grace, @pick_4)
+    @lottery.charge_contestants(@cash_5)
+    @lottery.charge_contestants(@mega_millions)
+    @lottery.charge_contestants(@pick_4)
+    @lottery.stubs(:winners).returns([{"Winston Churchill"=>"Cash 5"}, {"Frederick Douglas"=>"Mega Millions"}, {"Grace Hopper"=>"Pick 4"}])
+    @lottery.draw_winners
+
+    assert_equal "Grace Hopper won the Pick 4 on 04/08", @lottery.announce_winner("Pick 4")
+    assert_equal "Winston Churchill won the Cash 5 on 04/08", @lottery.announce_winner("Cash 5")
+    assert_equal "Fredrick Douglas won the Mega Millions on 04/08", @lottery.announce_winner("Mega Millions")
   end
 
 end

@@ -41,4 +41,12 @@ class ColoradoLottery
       end
     end
   end
+
+  def draw_winners
+    @current_contestants.each do |game, contestants|
+      contestants.shuffle
+      winners << {contestants.first => game}
+    end
+    return Time.now.strftime("%Y-%m-%d")
+  end
 end
