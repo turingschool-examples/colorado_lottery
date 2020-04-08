@@ -7,6 +7,15 @@ class ColoradoLottery
   end
 
   def interested_and_18?(contestant, game)
-    return true if contestant.age >= 18 && contestant.game_interests.find(game)
+    if contestant.age <= 18
+      false
+    elsif contestant.age >= 18
+      contestant.game_interests.any? do |interest|
+         interest == game.name
+      end
+    else
+      false
+    end
   end
+  
 end

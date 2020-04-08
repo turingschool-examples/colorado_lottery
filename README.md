@@ -202,6 +202,7 @@ pry(main)> lottery.register_contestant(winston, mega_millions)
 pry(main)> lottery.registered_contestants
 #=> {"Pick 4"=> [#<Contestant:0x007f8a3251c390>], "Mega Millions" => [#<Contestant:0x007f8a3251c390...>, #<Contestant:0x007f8a325a6c98...>, #<Contestant:0x007f8a33092c10...>], "Cash 5" => [#<Contestant:0x007f8a33092c10...>]}
 
+
 pry(main)> grace = Contestant.new({
                      first_name: 'Grace',
                      last_name: 'Hopper',
