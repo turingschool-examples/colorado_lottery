@@ -3,56 +3,31 @@ require 'minitest/pride'
 require './lib/contestant'
 
 
-class ContestantTest < Minitest::Test 
+class ContestantTest < Minitest::Test
+  def setup
+    @alexander = Contestant.new({first_name: 'Alexander',
+                                 last_name: 'Aigiades',
+                                 age: 28,
+                                 state_of_residence: 'CO',
+                                 spending_money: 10})
+  end
 
+  def test_it_exists
+    assert_instance_of Contestant, @alexander
+  end
+
+  def test_it_has_attributes
+    assert_equal "Alexander Aigiades", @alexander.full_name
+    assert_equal 28, @alexander.age
+    assert_equal "CO", @alexander.state_of_residence
+    assert_equal 10, @alexander.spending_money
+  end
 end
 
-# Use TDD to create a `Game` and `Contestant` class that respond to the following interaction pattern:
-# A contestant is considered out of state if their state of residence is not Colorado.
-#
-# ```ruby
-# pry(main)> require "./lib/contestant"
-# #=> true
-#
-# pry(main)> require "./lib/game"
-# #=> true
-#
-# pry(main)> pick_4 = Game.new('Pick 4', 2)
-# #=> #<Game:0x007f96c296b7b0...>
-#
-# pry(main)> mega_millions = Game.new('Mega Millions', 5, true)
-# #=> #<Game:0x007f96c2953278...>
-#
-# pry(main)> mega_millions.name
-# #=> "Mega Millions"
-#
-# pry(main)> mega_millions.cost
-# #=> 5
-#
-# pry(main)> mega_millions.national_drawing?
-# #=> true
-#
-# pry(main)> pick_4.national_drawing?
-# #=> false
-#
-# pry(main)> alexander = Contestant.new({first_name: 'Alexander',
-#                                       last_name: 'Aigiades',
-#                                       age: 28,
-#                                       state_of_residence: 'CO',
-#                                       spending_money: 10})
-# #=> <Contestant:0x007ff87ac0a498...>
-#
-# pry(main)> alexander.full_name
-# #=> "Alexander Aigiades"
-#
-# pry(main)> alexander.age
-# #=> 28
-#
-# pry(main)> alexander.state_of_residence
-# #=> "CO"
-#
-# pry(main)> alexander.spending_money
-# #=> 10
+
+
+
+
 #
 # pry(main)> alexander.out_of_state?
 # #=> false
