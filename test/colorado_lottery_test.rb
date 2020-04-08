@@ -60,4 +60,22 @@ class ColoradoLotteryTest < Minitest::Test
     assert_equal false, lottery.interested_and_18?(@alexander, cash_5)
   end
 
+  def test_can_register
+    lottery = ColoradoLottery.new
+    pick_4 = Game.new('Pick 4', 2)
+    mega_millions = Game.new('Mega Millions', 5, true)
+    cash_5 = Game.new('Cash 5', 1)
+    @alexander.add_game_interest('Pick 4')
+    @alexander.add_game_interest('Mega Millions')
+    @frederick.add_game_interest('Mega Millions')
+    @winston.add_game_interest('Cash 5')
+    @winston.add_game_interest('Mega Millions')
+    @benjamin.add_game_interest('Mega Millions')
+    assert_equal true, lottery.can_register?(@alexander, pick_4)
+    assert_equal false, lottery.can_register?(@alexander, cash_5)
+    assert_equal true, lottery.can_register?(@frederick, mega_millions)
+    assert_equal false, lottery.can_register?(@benjamin, mega_millions)
+    assert_equal false, lottery.can_register?(@frederick, cash_5)
+  end
+
 end
