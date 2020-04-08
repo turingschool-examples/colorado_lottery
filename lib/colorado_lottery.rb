@@ -5,4 +5,12 @@ class ColoradoLottery
     @winners = []
     @current_contestants = {}
   end
+
+  def interested_and_18?(contestant, game)
+      contestant.game_interests.include?(game.name) && at_least_18?(contestant)
+  end
+
+  def at_least_18?(contestant)
+    contestant.age >= 18
+  end
 end
