@@ -19,25 +19,22 @@ class ContestantTest < Minitest::Test
     assert_instance_of Contestant, @alexander
   end
 
+  def test_it_returns_attributes
+    assert_equal "Alexander Aigiades", @alexander.full_name
+    assert_equal 28, @alexander.age
+    assert_equal 'CO', @alexander.state_of_residence
+    assert_equal 10, @alexander.spending_money
+  end
+
 end
+
 #
-#alexander = Contestant.new({first_name: 'Alexander',
-#                                       last_name: 'Aigiades',
-#                                       age: 28,
-#                                       state_of_residence: 'CO',
-#                                       spending_money: 10})
-# #=> <Contestant:0x007ff87ac0a498...>
-#
-#alexander.full_name
 # #=> "Alexander Aigiades"
 #
-#alexander.age
 # #=> 28
 #
-#alexander.state_of_residence
 # #=> "CO"
 #
-#alexander.spending_money
 # #=> 10
 #
 #alexander.out_of_state?
