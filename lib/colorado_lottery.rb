@@ -5,4 +5,12 @@ class ColoradoLottery
     @winners = Array.new
     @current_contestants = Hash.new
   end
+
+  def interested_and_18?(contestant, game)
+    if contestant.age >= 18 && contestant.game_interests.any? {|games|games == game.name}
+      true
+    else
+      false
+    end
+  end
 end
