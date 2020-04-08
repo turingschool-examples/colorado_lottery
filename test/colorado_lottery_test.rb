@@ -51,7 +51,8 @@ class ColoradoLotteryTest < Minitest::Test
     @winston.add_game_interest(@mega_millions)
     @benjamin.add_game_interest(@mega_millions)
 require 'pry'; binding.pry
-    assert_equal false, @benjamin.interested_and_18?(@benjamin, @mega_millions)
+    assert_equal false, @lottery.interested_and_18?(@benjamin, @mega_millions)
+    assert_equal true, @lottery.interested_and_18?(@alexander, @pick_4)
   end
 
 end

@@ -9,7 +9,7 @@ class ColoradoLottery
   end
 
   def interested_and_18?(name, lotto)
-    name.age >= 18 && lotto == name.game_interestinteres
+    name.age >= 18 && name.game_interest[lotto]
   end
 
 end
