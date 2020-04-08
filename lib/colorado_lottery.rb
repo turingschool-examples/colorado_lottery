@@ -4,6 +4,7 @@ class ColoradoLottery
     @registered_contestants = Hash.new{}
     @winners = []
     @current_contestants = {}
+
   end
 
   def interested_and_18?(contestant, game)

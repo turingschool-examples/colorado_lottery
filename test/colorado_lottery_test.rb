@@ -140,5 +140,13 @@ end
     lottery.register_contestant(alexander, pick_4)
     registered = {"Pick 4" => [alexander]}
     assert_equal registered, lottery.registered_contestants
+    lottery.register_contestant(alexander, mega_millions)
+    registered2 = {"Pick 4" => [alexander], "Mega Millions" => [alexander]}
+    assert_equal registered2, lottery.registered_contestants
+    lottery.register_contestant(frederick, mega_millions)
+    lottery.register_contestant(winston, cash_5)
+    lottery.register_contestant(winston, mega_millions)
+    registered3 = {"Pick 4" => [alexander], "Mega Millions" => [alexander, frederick, winston], "Cash 5" => [winston]}
+    assert_equal registered3, lottery.registered_contestants
   end
 end
