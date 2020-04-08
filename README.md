@@ -228,7 +228,7 @@ pry(main)> lottery.eligible_contestants(cash_5)
 #=> [#<Contestant:0x007ffe96db1180...>, #<Contestant:0x007ffe99998190...>]
 
 pry(main)> lottery.eligible_contestants(mega_millions)
-#=> [#<Contestant:0x007ffe95fab0b8...>, #<Contestant:0x007ffe99848470...>, #<Contestant:0x007ffe99998190...>]
+#=> [#<Contestant:0x007ffe95fab0b8...>, #<Contestant:0x007ffe99848470...>, #<Contestant:0x007f8a33092c10...> #<Contestant:0x007ffe99998190...>]
 
 pry(main)> lottery.charge_contestants(cash_5)
 
