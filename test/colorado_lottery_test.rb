@@ -42,9 +42,9 @@ class ColoradoLotteryTest < MiniTest::Test
   end
 
   def test_attributes
-    assert_equal {}, @lottery.registered_contestants
+    assert_equal({}, @lottery.registered_contestants)
     assert_equal [], @lottery.winners
-    assert_equal {}, @lottery.current_contestants
+    assert_equal({}, @lottery.current_contestants)
   end
-  
+
 end
