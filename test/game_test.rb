@@ -14,5 +14,6 @@ class GameTest < Minitest::Test
     assert_instance_of Game, mega_millions
     assert_equal "Mega Millions", mega_millions.name
     assert_equal 5, mega_millions.cost
+    assert_equal true, mega_millions.national_drawing?
   end
 end
