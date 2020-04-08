@@ -13,7 +13,8 @@ class Contestant
     @spending_money = contestant_info[:spending_money]
   end
 
-  # def full_name
-  # end
+  def full_name
+    @first_name + " " + @last_name
+  end
 
 end

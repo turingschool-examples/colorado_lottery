@@ -24,8 +24,7 @@ class ContestantTest < Minitest::Test
     assert_equal 10, @alexander.spending_money
   end
 
-  # def test_it_has_full_name
-  #   assert_equal "Alexander Aigiades", @alexander.full_name
-  # end
-
+  def test_it_has_full_name
+    assert_equal "Alexander Aigiades", @alexander.full_name
+  end
 end
