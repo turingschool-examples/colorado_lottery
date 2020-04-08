@@ -27,7 +27,7 @@ class ContestantTest < Minitest::Test
   end
 
   def test_it_returns_out_of_state
-    assert_eqaul false, @alexander.out_of_state?
+    assert_equal false, @alexander.out_of_state?
   end
 
 end
