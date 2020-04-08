@@ -34,4 +34,9 @@ class ContestantTest < MiniTest::Test
     assert_equal ["Mega Millions", "Pick 4"], @alexander.game_interests
   end
 
+  def test_can_spend_money
+    @alexander.spend(5)
+    assert_equal 5, @alexander.spending_money
+  end
+
 end

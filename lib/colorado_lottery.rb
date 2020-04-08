@@ -38,13 +38,21 @@ class ColoradoLottery
   end
 
   def eligible_contestants(game)
-    eligible = []
-    @registered_contestants[game.name].each do |contestant|
-      if contestant.spending_money >= game.cost
-        eligible << contestant
+    @registered_contestants[game.name].find_all do |contestant|
+      contestant.spending_money >= game.cost
+    end
+  end
+
+  def charge_contestants(game)
+    eligible = eligible_contestants(game)
+    eligible.map do |contestant|
+      contestant.spend(game.cost)
+      if @current_contestants[game].nil?
+        @current_contestants[game] = [contestant.full_name]
+      else
+        @current_contestants[game] << contestant.full_name
       end
     end
-    eligible
   end
 
 end

@@ -126,4 +126,5 @@ class ColoradoLotteryTest < MiniTest::Test
     assert_equal 15, @frederick.spending_money
     @lottery.charge_contestants(@pick_4)
     assert_equal ["Alexander Aigades", "Grace Hopper"], @lottery.current_contestants[@pick_4]
+  end
 end

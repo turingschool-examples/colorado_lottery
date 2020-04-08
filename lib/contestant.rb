@@ -21,4 +21,8 @@ class Contestant
     @game_interests << game_name
   end
 
+  def spend(money)
+    @spending_money -= money
+  end
+
 end
