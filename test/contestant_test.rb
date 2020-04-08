@@ -71,3 +71,17 @@ class ConstantTest < MiniTest::Test
 
     assert_equal [], alexander.game_interests
   end
+
+  def test_contestant_can_add_game_interests
+    alexander = Contestant.new({first_name: 'Alexander',
+                                      last_name: 'Aigiades',
+                                      age: 28,
+                                      state_of_residence: 'CO',
+                                      spending_money: 10})
+    mega_millions = Game.new('Mega Millions', 5, true)
+    pick_4 = Game.new('Pick 4', 2)
+    alexander.add_game_interest('Mega Millions')
+    alexander.add_game_interest('Pick 4')
+
+    assert_equal ['Mega Millions', 'Pick 4'], alexander.game_interests
+  end
