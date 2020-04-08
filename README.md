@@ -14,59 +14,59 @@ Use TDD to create a `Game` and `Contestant` class that respond to the following 
 A contestant is considered out of state if their state of residence is not Colorado.
 
 ```ruby
-pry(main)> require "./lib/contestant"
+require "./lib/contestant"
 #=> true
 
-pry(main)> require "./lib/game"
+require "./lib/game"
 #=> true
 
-pry(main)> pick_4 = Game.new('Pick 4', 2)
+pick_4 = Game.new('Pick 4', 2)
 #=> #<Game:0x007f96c296b7b0...>
 
-pry(main)> mega_millions = Game.new('Mega Millions', 5, true)
+mega_millions = Game.new('Mega Millions', 5, true)
 #=> #<Game:0x007f96c2953278...>
 
-pry(main)> mega_millions.name
+mega_millions.name
 #=> "Mega Millions"
 
-pry(main)> mega_millions.cost
+mega_millions.cost
 #=> 5
 
-pry(main)> mega_millions.national_drawing?
+mega_millions.national_drawing?
 #=> true
 
-pry(main)> pick_4.national_drawing?
+pick_4.national_drawing?
 #=> false
 
-pry(main)> alexander = Contestant.new({first_name: 'Alexander',
+alexander = Contestant.new({first_name: 'Alexander',
                                       last_name: 'Aigiades',
                                       age: 28,
                                       state_of_residence: 'CO',
                                       spending_money: 10})
 #=> <Contestant:0x007ff87ac0a498...>
 
-pry(main)> alexander.full_name
+alexander.full_name
 #=> "Alexander Aigiades"
 
-pry(main)> alexander.age
+alexander.age
 #=> 28
 
-pry(main)> alexander.state_of_residence
+alexander.state_of_residence
 #=> "CO"
 
-pry(main)> alexander.spending_money
+alexander.spending_money
 #=> 10
 
-pry(main)> alexander.out_of_state?
+alexander.out_of_state?
 #=> false
 
-pry(main)> alexander.game_interests
+alexander.game_interests
 #=> []
 
-pry(main)> alexander.add_game_interest('Mega Millions')
-pry(main)> alexander.add_game_interest('Pick 4')
+alexander.add_game_interest('Mega Millions')
+alexander.add_game_interest('Pick 4')
 
-pry(main)> alexander.game_interests
+alexander.game_interests
 => ["Mega Millions", "Pick 4"]
 ```
 
@@ -77,37 +77,37 @@ Use TDD to create a ColoradoLottery class that responds to the following interac
 - A contestant #can_register? if they are interested in the game, 18 years of age or older, and they are either a Colorado resident or this is a national game
 
 ```ruby
-pry(main)> require "./lib/contestant"
+require "./lib/contestant"
 #=> true
 
-pry(main)> require "./lib/game"
+require "./lib/game"
 #=> true
 
-pry(main)> require "./lib/colorado_lottery"
+require "./lib/colorado_lottery"
 #=> true
 
-pry(main)> lottery = ColoradoLottery.new
+lottery = ColoradoLottery.new
 #=> #<ColoradoLottery:0x007f8a3250c440...>
 
-pry(main)> lottery.registered_contestants
+lottery.registered_contestants
 #=> {}
 
-pry(main)> lottery.winners
+lottery.winners
 #=> []
 
-pry(main)> lottery.current_contestants
+lottery.current_contestants
 #=> {}
 
-pry(main)> pick_4 = Game.new('Pick 4', 2)
+pick_4 = Game.new('Pick 4', 2)
 #=> #<Game:0x007f8a317b5e40...>
 
-pry(main)> mega_millions = Game.new('Mega Millions', 5, true)
+mega_millions = Game.new('Mega Millions', 5, true)
 #=> #<Game:0x007f8a322ad5a0...>
 
-pry(main)> cash_5 = Game.new('Cash 5', 1)
+cash_5 = Game.new('Cash 5', 1)
 #=> #<Game:0x007f8a32295360...>
 
-pry(main)> alexander = Contestant.new({
+alexander = Contestant.new({
                        first_name: 'Alexander',
                        last_name: 'Aigades',
                        age: 28,
@@ -115,7 +115,7 @@ pry(main)> alexander = Contestant.new({
                        spending_money: 10})
 #=> #<Contestant:0x007f8a3251c390...>
 
-pry(main)> benjamin = Contestant.new({
+benjamin = Contestant.new({
                        first_name: 'Benjamin',
                        last_name: 'Franklin',
                        age: 17,
@@ -123,56 +123,56 @@ pry(main)> benjamin = Contestant.new({
                        spending_money: 100})
 #=> #<Contestant:0x007f8a30383350...>
 
-pry(main)> frederick = Contestant.new({
+frederick = Contestant.new({
                        first_name:  'Frederick',
                        last_name: 'Douglas',
                        age: 55,
                        state_of_residence: 'NY',
                        spending_money: 20})
-#=> #<Contestant:0x007f8a325a6c98...>
 
-pry(main)> winston = Contestant.new({
+
+winston = Contestant.new({
                      first_name: 'Winston',
                      last_name: 'Churchill',
                      age: 18,
                      state_of_residence: 'CO',
                      spending_money: 5})
-#=> #<Contestant:0x007f8a33092c10...>
 
-pry(main)> alexander.add_game_interest('Pick 4')
 
-pry(main)> alexander.add_game_interest('Mega Millions')
+alexander.add_game_interest('Pick 4')
 
-pry(main)> frederick.add_game_interest('Mega Millions')
+alexander.add_game_interest('Mega Millions')
 
-pry(main)> winston.add_game_interest('Cash 5')
+frederick.add_game_interest('Mega Millions')
 
-pry(main)> winston.add_game_interest('Mega Millions')
+winston.add_game_interest('Cash 5')
 
-pry(main)> benjamin.add_game_interest('Mega Millions')
+winston.add_game_interest('Mega Millions')
 
-pry(main)> lottery.interested_and_18?(alexander, pick_4)
+benjamin.add_game_interest('Mega Millions')
+
+lottery.interested_and_18?(alexander, pick_4)
 #=> true
 
-pry(main)> lottery.interested_and_18?(benjamin, mega_millions)
+lottery.interested_and_18?(benjamin, mega_millions)
 #=> false
 
-pry(main)> lottery.interested_and_18?(alexander, cash_5)
+lottery.interested_and_18?(alexander, cash_5)
 #=> false
 
-pry(main)> lottery.can_register?(alexander, pick_4)
+lottery.can_register?(alexander, pick_4)
 #=> true
 
-pry(main)> lottery.can_register?(alexander, cash_5)
+lottery.can_register?(alexander, cash_5)
 #=> false
 
-pry(main)> lottery.can_register?(frederick, mega_millions)
+lottery.can_register?(frederick, mega_millions)
 #=> true
 
-pry(main)> lottery.can_register?(benjamin, mega_millions)
+lottery.can_register?(benjamin, mega_millions)
 #=> false
 
-pry(main)> lottery.can_register?(frederick, cash_5)
+lottery.can_register?(frederick, cash_5)
 #=> false
 ```
 
@@ -185,24 +185,24 @@ pry(main)> lottery.can_register?(frederick, cash_5)
 - current_contestants are lists of contestant names who have been charged, organized by game.
 
 ```ruby
-pry(main)> lottery.register_contestant(alexander, pick_4)
+lottery.register_contestant(alexander, pick_4)
 
-pry(main)> lottery.registered_contestants
+lottery.registered_contestants
 #=> {"Pick 4"=> [#<Contestant:0x007f8a3251c390...>]}
 
-pry(main)> lottery.register_contestant(alexander, mega_millions)
+lottery.register_contestant(alexander, mega_millions)
 
-pry(main)> lottery.registered_contestants
+lottery.registered_contestants
 #=> {"Pick 4"=> [#<Contestant:0x007f8a3251c390...>], "Mega Millions"=> [#<Contestant:0x007f8a3251c390...>]}
 
-pry(main)> lottery.register_contestant(frederick, mega_millions)
-pry(main)> lottery.register_contestant(winston, cash_5)
-pry(main)> lottery.register_contestant(winston, mega_millions)
+lottery.register_contestant(frederick, mega_millions)
+lottery.register_contestant(winston, cash_5)
+lottery.register_contestant(winston, mega_millions)
 
-pry(main)> lottery.registered_contestants
+lottery.registered_contestants
 #=> {"Pick 4"=> [#<Contestant:0x007f8a3251c390>], "Mega Millions" => [#<Contestant:0x007f8a3251c390...>, #<Contestant:0x007f8a325a6c98...>, #<Contestant:0x007f8a33092c10...>], "Cash 5" => [#<Contestant:0x007f8a33092c10...>]}
 
-pry(main)> grace = Contestant.new({
+grace = Contestant.new({
                      first_name: 'Grace',
                      last_name: 'Hopper',
                      age: 20,
@@ -210,58 +210,58 @@ pry(main)> grace = Contestant.new({
                      spending_money: 20})
 #=> #<Contestant:0x007ffe99998190...>
 
-pry(main)> grace.add_game_interest('Mega Millions')
-pry(main)> grace.add_game_interest('Cash 5')
-pry(main)> grace.add_game_interest('Pick 4')
-pry(main)> lottery.register_contestant(grace, mega_millions)
-pry(main)> lottery.register_contestant(grace, cash_5)
-pry(main)> lottery.register_contestant(grace, pick_4)
+grace.add_game_interest('Mega Millions')
+grace.add_game_interest('Cash 5')
+grace.add_game_interest('Pick 4')
+lottery.register_contestant(grace, mega_millions)
+lottery.register_contestant(grace, cash_5)
+lottery.register_contestant(grace, pick_4)
 
 lottery.registered_contestants
 #=> {"Pick 4"=> [#<Contestant:0x007f8a3251c390>, #<Contestant:0x007ffe99998190...>], "Mega Millions" => [#<Contestant:0x007f8a3251c390...>, #<Contestant:0x007f8a325a6c98...>, #<Contestant:0x007f8a33092c10...>, #<Contestant:0x007ffe99998190...>], "Cash 5" => [#<Contestant:0x007f8a33092c10...>, #<Contestant:0x007ffe99998190...>]}
 
-pry(main)> lottery.eligible_contestants(pick_4)
+lottery.eligible_contestants(pick_4)
 #=> [#<Contestant:0x007ffe95fab0b8...>,
  #<Contestant:0x007ffe99998190...>]
 
-pry(main)> lottery.eligible_contestants(cash_5)
+lottery.eligible_contestants(cash_5)
 #=> [#<Contestant:0x007ffe96db1180...>, #<Contestant:0x007ffe99998190...>]
 
-pry(main)> lottery.eligible_contestants(mega_millions)
+lottery.eligible_contestants(mega_millions)
 #=> [#<Contestant:0x007ffe95fab0b8...>, #<Contestant:0x007ffe99848470...>, #<Contestant:0x007ffe99998190...>]
 
-pry(main)> lottery.charge_contestants(cash_5)
+lottery.charge_contestants(cash_5)
 
-pry(main)> lottery.current_contestants
+lottery.current_contestants
 #=> {#<Game:0x007f8a32295360...> => ["Winston Churchill", "Grace Hopper"]}
 
-pry(main)> grace.spending_money
+grace.spending_money
 #=> 19
 
-pry(main)> winston.spending_money
+winston.spending_money
 #=> 4
 
-pry(main)> lottery.charge_contestants(mega_millions)
+lottery.charge_contestants(mega_millions)
 
-pry(main)> lottery.current_contestants
+lottery.current_contestants
 #=> {#<Game:0x007f8a32295360...> => ["Winston Churchill", "Grace Hopper"],
  #<Game:0x007f8a322ad5a0...> => ["Alexander Aigades", "Frederick Douglas", "Grace Hopper"]}
 
-pry(main)> grace.spending_money
+grace.spending_money
 #=> 14
 
-pry(main)> winston.spending_money
+winston.spending_money
 #=> 4
 
-pry(main)> alexander.spending_money
+alexander.spending_money
 #=> 5
 
-pry(main)> frederick.spending_money
+frederick.spending_money
 #=> 15
 
-pry(main)> lottery.charge_contestants(pick_4)
+lottery.charge_contestants(pick_4)
 
-pry(main)> lottery.current_contestants
+lottery.current_contestants
 #=> {#<Game:0x007f8a32295360...> => ["Winston Churchill", "Grace Hopper"],
 #<Game:0x007f8a322ad5a0...> => ["Alexander Aigades", "Frederick Douglas", "Grace Hopper"],
 #<Game:0x007f8a317b5e40...> => ["Alexander Aigades", "Grace Hopper"]}
@@ -284,29 +284,29 @@ pry(main)> lottery.current_contestants
 
 ```ruby
 
-pry(main)> lottery.draw_winners
+lottery.draw_winners
 #=> "2020-04-07"
 
-pry(main)> lottery.winners.class
+lottery.winners.class
 #=> Array
 
-pry(main)> lottery.winners.first.class
+lottery.winners.first.class
 #=> Hash
 
-pry(main)> lottery.winners.last.class
+lottery.winners.last.class
 #=> Hash
 
-pry(main)> lottery.winners.length
+lottery.winners.length
 #=> 3
 
 # Based on the example return value of #winners above in the iteration 4 directions, the announce_winner method would then return the following:
 
-pry(main)> lottery.announce_winner("Pick 4")
+lottery.announce_winner("Pick 4")
 #=> "Grace Hopper won the Pick 4 on 04/07"
 
-pry(main)> lottery.announce_winner("Cash 5")
+lottery.announce_winner("Cash 5")
 #=> "Winston Churchill won the Cash 5 on 04/07"
 
-pry(main)> lottery.announce_winner("Mega Millions")
+lottery.announce_winner("Mega Millions")
 #=> "Frederick Douglas won the Mega Millions on 04/07"
 ```
