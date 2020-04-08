@@ -31,17 +31,10 @@ class ContestantTest < Minitest::Test
   end
 
   def test_it_returns_game_interests
-    assert_equal [], exander.game_interests
+    assert_equal [], @alexander.game_interests
     @alexander.add_game_interest('Mega Millions')
     @alexander.add_game_interest('Pick 4')
-    assert_equal ['Mega Millions', 'Pick 4'], @alexander.game_interests
+    assert_equal ["Mega Millions", "Pick 4"], @alexander.game_interests
   end
 
 end
-
-
-#
-# #=> []
-#
-#
-# => ["Mega Millions", "Pick 4"]
