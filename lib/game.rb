@@ -7,7 +7,8 @@ class Game
     @national_drawing = national_drawing
   end
 
-  def nationalnational_drawing?
-
+  def national_drawing?
+    @national_drawing
+  end
 
 end
