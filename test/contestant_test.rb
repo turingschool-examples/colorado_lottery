@@ -32,26 +32,16 @@ class ContestantTest < Minitest::Test
     assert_equal false, @alexander.out_of_state?
     assert_equal true, jeff.out_of_state?
   end
+
+  def test_it_can_add_game_interests
+    assert_equal [], @alexander.game_interests
+    @alexander.add_game_interest('Mega Millions')
+    @alexander.add_game_interest('Pick 4')
+    assert_equal ["Mega Millions", "Pick 4"], @alexander.game_interests
+  end
 end
 
 
-# #=> <Contestant:0x007ff87ac0a498...>
-#
-# pry(main)> alexander.full_name
-# #=> "Alexander Aigiades"
-#
-# pry(main)> alexander.age
-# #=> 28
-#
-# pry(main)> alexander.state_of_residence
-# #=> "CO"
-#
-# pry(main)> alexander.spending_money
-# #=> 10
-#
-# pry(main)> alexander.out_of_state?
-# #=> false
-#
 # pry(main)> alexander.game_interests
 # #=> []
 #
