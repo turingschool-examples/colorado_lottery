@@ -39,6 +39,14 @@ class ColoradoLotteryTest < Minitest::Test
       age: 18,
       state_of_residence: 'CO',
       spending_money: 5})
+
+    @alexander.add_game_interest('Pick 4')
+    @alexander.add_game_interest('Mega Millions')
+    @frederick.add_game_interest('Mega Millions')
+    @winston.add_game_interest('Cash 5')
+    @winston.add_game_interest('Mega Millions')
+    @benjamin.add_game_interest('Mega Millions')
+
   end
 
   def test_it_exists
@@ -53,39 +61,16 @@ class ColoradoLotteryTest < Minitest::Test
   end
 
   def test_interested_and_18?
-    @alexander.add_game_interest('Pick 4')
-    @alexander.add_game_interest('Mega Millions')
-    @frederick.add_game_interest('Mega Millions')
-    @winston.add_game_interest('Cash 5')
-    @winston.add_game_interest('Mega Millions')
-    @benjamin.add_game_interest('Mega Millions')
-
     assert_equal true, @lottery.interested_and_18?(@alexander, @pick_4)
     assert_equal false, @lottery.interested_and_18?(@benjamin, @mega_millions)
     assert_equal false, @lottery.interested_and_18?(@alexander, @cash_5)
   end
+
+  def test_can_register
+    assert_equal true, @lottery.can_register?(@alexander, @pick_4)
+    assert_equal false, @lottery.can_register?(@alexander, @cash_5)
+    assert_equal true,  @lottery.can_register?(@frederick, @mega_millions)
+    assert_equal false,  @lottery.can_register?(@benjamin, @mega_millions)
+    assert_equal false,  @lottery.can_register?(@frederick, @cash_5)
+  end
 end
-
-
-
-
-#
-
-#
-# #=> false
-#
-# pry(main)> lottery.can_register?(alexander, pick_4)
-# #=> true
-#
-# pry(main)> lottery.can_register?(alexander, cash_5)
-# #=> false
-#
-# pry(main)> lottery.can_register?(frederick, mega_millions)
-# #=> true
-#
-# pry(main)> lottery.can_register?(benjamin, mega_millions)
-# #=> false
-#
-# pry(main)> lottery.can_register?(frederick, cash_5)
-# #=> false
-# ```
