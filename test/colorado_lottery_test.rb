@@ -62,6 +62,7 @@ class ColoradoLotteryTest < MiniTest::Test
       assert_equal false, lottery.interested_and_18?(benjamin, mega_millions)
       assert_equal false, lottery.interested_and_18?(alexander, cash_5)
 
+  end
 end
 
 
@@ -69,10 +70,12 @@ end
 
 
 
-
-# Use TDD to create a ColoradoLottery class that responds to the following interaction pattern.
-#
-# - A contestant #can_register? if they are interested in the game, 18 years of age or older, and they are either a Colorado resident or this is a national game
+# # Use TDD to create a ColoradoLottery class that responds to the
+# following interaction pattern.
+# #
+# # - A contestant #can_register? if they are interested in the game,
+#  18 years of age or older, and they are either a Colorado resident or this is a
+#  national game
 #
 
 
