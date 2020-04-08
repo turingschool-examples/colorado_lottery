@@ -27,4 +27,9 @@ class ContestantTest < Minitest::Test
   def test_it_is_not_out_of_state
     assert_equal false, @alexander.out_of_state?
   end
+
+  def test_it_has_interests
+    assert_equal [], @alexander.game_interests
+  end
+
 end
