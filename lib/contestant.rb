@@ -10,7 +10,7 @@ class Contestant
   end
 
   def out_of_state?
-    
+    @out_of_state
   end
 
   def full_name
