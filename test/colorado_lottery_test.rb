@@ -105,4 +105,25 @@ class ColoradoLotteryTest < MiniTest::Test
     assert_equal [@alexander, @frederick, @winston, @grace], @lottery.eligible_contestants(@mega_millions)
   end
 
+  def test_charging_contestants
+    @lottery.register_contestant(@alexander, @pick_4)
+    @lottery.register_contestant(@alexander, @mega_millions)
+    @lottery.register_contestant(@frederick, @mega_millions)
+    @lottery.register_contestant(@winston, @cash_5)
+    @lottery.register_contestant(@winston, @mega_millions)
+    @lottery.register_contestant(@grace, @mega_millions)
+    @lottery.register_contestant(@grace, @cash_5)
+    @lottery.register_contestant(@grace, @pick_4)
+    @lottery.charge_contestants(@cash_5)
+    assert_equal ["Winston Churchill", "Grace Hopper"], @lottery.current_contestants[@cash_5]
+    assert_equal 19, @grace.spending_money
+    assert_equal 4, @winston.spending_money
+    @lottery.charge_contestants(@mega_millions)
+    assert_equal ["Alexander Aigades", "Frederick Douglas", "Grace Hopper"], @lottery.current_contestants[@mega_millions]
+    assert_equal 14, @grace.spending_money
+    assert_equal 4, @winston.spending_money
+    assert_equal 5, @alexander.spending_money
+    assert_equal 15, @frederick.spending_money
+    @lottery.charge_contestants(@pick_4)
+    assert_equal ["Alexander Aigades", "Grace Hopper"], @lottery.current_contestants[@pick_4]
 end
