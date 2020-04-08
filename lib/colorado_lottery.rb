@@ -16,5 +16,9 @@ class ColoradoLottery
     ((game.national_drawing?) || (contestant.state_of_residence == "CO"))
   end
 
+  def register_contestant(contestant, game)
+    require "pry";binding.pry
+  end
+
 
 end
