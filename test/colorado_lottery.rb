@@ -113,9 +113,13 @@ class ColoradoLotteryTest < MiniTest::Test
 
     expected = [@winston, @grace]
     assert_equal expected, @lottery.eligible_contestants(@cash_5)
-    
+
     expected = [@alexander, @frederick, @winston, @grace]
-    assert_equal expected, @lotter.eligible_contestants(@mega_millions)
+    assert_equal expected, @lottery.eligible_contestants(@mega_millions)
+  end
+
+  def test_charge_contestants
+
   end
 
 end
