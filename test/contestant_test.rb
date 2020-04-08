@@ -42,8 +42,6 @@ class ContestantTest < Minitest::Test
                                 age: 28,
                                 state_of_residence: 'CO',
                                 spending_money: 10})
-    pick_4 = Game.new('Pick 4', 2)
-    mega_millions = Game.new('Mega Millions', 5, true)
 
     assert_equal [], alexander.game_interests
 
