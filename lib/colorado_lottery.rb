@@ -19,4 +19,15 @@ class ColoradoLottery
     return false unless interested_and_18?(contestant,game)
     !contestant.out_of_state? || game.national_drawing?
   end
+
+  def register_contestant(contestant, game)
+    if can_register?(contestant, game)
+      if registered_contestants[game.name]
+        @registered_contestants[game.name] << contestant
+      else
+        contestants = []
+        @registered_contestants[game.name] = contestants << contestant
+      end
+    end
+  end
 end
