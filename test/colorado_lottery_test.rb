@@ -156,4 +156,67 @@ class ColoradoLotteryTest < Minitest::Test
     assert_equal result3, @lottery.eligible_contestants(@mega_millions)
   end
 
+  def test_charge_contestants
+    @alexander.add_game_interest('Pick 4')
+    @alexander.add_game_interest('Mega Millions')
+    @frederick.add_game_interest('Mega Millions')
+    @winston.add_game_interest('Cash 5')
+    @winston.add_game_interest('Mega Millions')
+    @benjamin.add_game_interest('Mega Millions')
+    @lottery.register_contestant(@alexander, @pick_4)
+    @lottery.register_contestant(@alexander, @mega_millions)
+    @lottery.register_contestant(@frederick, @mega_millions)
+    @lottery.register_contestant(@winston, @cash_5)
+    @lottery.register_contestant(@winston, @mega_millions)
+    grace = Contestant.new({
+                         first_name: 'Grace',
+                         last_name: 'Hopper',
+                         age: 20,
+                         state_of_residence: 'CO',
+                         spending_money: 20})
+
+    grace.add_game_interest('Mega Millions')
+    grace.add_game_interest('Cash 5')
+    grace.add_game_interest('Pick 4')
+    @lottery.register_contestant(grace, @mega_millions)
+    @lottery.register_contestant(grace, @cash_5)
+    @lottery.register_contestant(grace, @pick_4)
+
+    @lottery.charge_contestants(@cash_5)
+
+    assert_equal 19, grace.spending_money
+    assert_equal 4, @winston.spending_money
+  end
+
+  def test_current_contestants
+    @alexander.add_game_interest('Pick 4')
+    @alexander.add_game_interest('Mega Millions')
+    @frederick.add_game_interest('Mega Millions')
+    @winston.add_game_interest('Cash 5')
+    @winston.add_game_interest('Mega Millions')
+    @benjamin.add_game_interest('Mega Millions')
+    @lottery.register_contestant(@alexander, @pick_4)
+    @lottery.register_contestant(@alexander, @mega_millions)
+    @lottery.register_contestant(@frederick, @mega_millions)
+    @lottery.register_contestant(@winston, @cash_5)
+    @lottery.register_contestant(@winston, @mega_millions)
+    grace = Contestant.new({
+                         first_name: 'Grace',
+                         last_name: 'Hopper',
+                         age: 20,
+                         state_of_residence: 'CO',
+                         spending_money: 20})
+
+    grace.add_game_interest('Mega Millions')
+    grace.add_game_interest('Cash 5')
+    grace.add_game_interest('Pick 4')
+    @lottery.register_contestant(grace, @mega_millions)
+    @lottery.register_contestant(grace, @cash_5)
+    @lottery.register_contestant(grace, @pick_4)
+    @lottery.charge_contestants(@cash_5)
+
+    result = { @cash_5 => [@winston.full_name, grace.full_name]}
+    assert_equal result, @lottery.current_contestants
+  end
+
 end
