@@ -13,4 +13,10 @@ class Contestant
     @game_interests = []
   end
 
+  def out_of_state?(contestant)
+    if contestant.state_of_residence == 'CO'
+      false
+    end
+  end
+
 end
