@@ -17,5 +17,8 @@ class ColoradoLottery
       false
     end
   end
-  
+
+  def can_register?(contestant, game)
+    interested_and_18?(contestant, game) && ((game.national_drawing?) || !contestant.out_of_state?)
+  end
 end
