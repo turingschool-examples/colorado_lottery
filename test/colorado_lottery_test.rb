@@ -36,6 +36,13 @@ class ColoradoLotteryTest < Minitest::Test
                            age: 18,
                            state_of_residence: 'CO',
                            spending_money: 5})
+
+  @alexander.add_game_interest('Pick 4')
+  @alexander.add_game_interest('Mega Millions')
+  @frederick.add_game_interest('Mega Millions')
+  @winston.add_game_interest('Cash 5')
+  @winston.add_game_interest('Mega Millions')
+  @benjamin.add_game_interest('Mega Millions')
   end
 
   def test_it_exists
@@ -77,5 +84,48 @@ class ColoradoLotteryTest < Minitest::Test
 
     assert_equal false, @lottery.can_register?(@benjamin, @mega_millions)
     assert_equal false, @lottery.can_register?(@frederick, @cash_5)
+  end
+
+  def test_it_can_register_contestants
+    @lottery.register_contestant(@alexander, @pick_4)
+    registered_contestants = { "Pick 4" => [@alexander]}
+    assert_equal registered_contestants, @lottery.registered_contestants
+
+    @lottery.register_contestant(@alexander, @mega_millions)
+    registered_contestants2 = { "Pick 4" => [@alexander],
+                                "Mega Millions" => [@alexander]}
+    assert_equal registered_contestants2, @lottery.registered_contestants
+
+    @lottery.register_contestant(@frederick, @mega_millions)
+    @lottery.register_contestant(@winston, @cash_5)
+    @lottery.register_contestant(@winston, @mega_millions)
+
+    registered_contestants3 = { "Pick 4" => [@alexander],
+                                "Mega Millions" => [@alexander, @frederick, @winston],
+                              "Cash 5" => [@winston]
+                            }
+    assert_equal registered_contestants3, @lottery.registered_contestants
+
+
+    grace = Contestant.new({
+                     first_name: 'Grace',
+                     last_name: 'Hopper',
+                     age: 20,
+                     state_of_residence: 'CO',
+                     spending_money: 20})
+
+
+    grace.add_game_interest('Mega Millions')
+    grace.add_game_interest('Cash 5')
+    grace.add_game_interest('Pick 4')
+    @lottery.register_contestant(grace, @mega_millions)
+    @lottery.register_contestant(grace, @cash_5)
+    @lottery.register_contestant(grace, @pick_4)
+
+    registered_contestants4 = { "Pick 4" => [@alexander, grace],
+                                "Mega Millions" => [@alexander, @frederick, @winston, grace],
+                              "Cash 5" => [@winston, grace]
+                            }
+    assert_equal registered_contestants4, @lottery.registered_contestants
   end
 end
