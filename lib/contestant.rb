@@ -9,4 +9,8 @@ class Contestant
     @spending_money = contestant_details[:spending_money]
     @game_interests = []
   end
+
+  def out_of_state?
+    @state_of_residence != "CO"
+  end
 end
