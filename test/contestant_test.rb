@@ -30,4 +30,12 @@ class ConstantTest < MiniTest::Test
     assert_equal false, pick_4.national_drawing?
   end
 
-  
+  def test_instance_of_contestant
+    alexander = Contestant.new({first_name: 'Alexander',
+                                      last_name: 'Aigiades',
+                                      age: 28,
+                                      state_of_residence: 'CO',
+                                      spending_money: 10})
+
+    assert_instance of Contestant, alexander
+  end
