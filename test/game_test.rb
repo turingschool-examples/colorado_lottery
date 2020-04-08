@@ -16,24 +16,23 @@ class GameTest < Minitest::Test
     assert_instance_of Game, @mega_millions
   end
 
+  def test_it_returns_attributes
+    assert_equal "Mega Millions", @mega_millions.name
+    assert_equal 5, @mega_millions.cost
+    assert_equal true, @mega_millions.national_drawing?
+    assert_equal false, @pick_4.national_drawing?
+
+  end
+
 
 end
 
-#
-# #=> #<Game:0x007f96c296b7b0...>
-#
-# #=> #<Game:0x007f96c2953278...>
-#
-#mega_millions.name
 # #=> "Mega Millions"
 #
-#mega_millions.cost
 # #=> 5
 #
-#mega_millions.national_drawing?
 # #=> true
 #
-#pick_4.national_drawing?
 # #=> false
 #
 #alexander = Contestant.new({first_name: 'Alexander',
