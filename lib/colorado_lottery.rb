@@ -27,4 +27,8 @@ class ColoradoLottery
       @registered_contestants[game.name] << contestant
     end
   end
+
+  def eligible_contestants(game)
+    require "pry"; binding.pry
+  end
 end
