@@ -17,13 +17,21 @@ class ColoradoLottery
   end
 
   def register_contestant(contestant, game)
-    if registered_contestants[game.name] == nil
+
+     if registered_contestants[game.name] == nil #&& (contestant.spending_money > game.cost)
       registered_contestants[game.name] = []
       registered_contestants[game.name] << contestant
-    else
+      contestant.charge_contestant(game.cost)
+    elsif #registered_contestants[game.name] != nil #&& (contestant.spending_money > game.cost)
       registered_contestants[game.name] << contestant
-
+      contestant.charge_contestant(game.cost)
     end
+  end
+
+  def eligible_contestants(pick_4)
+    
+
+
   end
 
 

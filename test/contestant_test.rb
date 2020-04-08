@@ -45,4 +45,13 @@ class ContestantTest < MiniTest::Test
 
 
   end
+
+  def test_charge_contestant
+    alexander = Contestant.new({first_name: 'Alexander',
+                                      last_name: 'Aigiades',
+                                      age: 28,
+                                      state_of_residence: 'CO',
+                                      spending_money: 10})
+  end
+
 end
