@@ -10,5 +10,7 @@ class ColoradoLottery
     contestant.game_interests.include?(game.name) && (contestant.age >= 18)
   end
 
+  
+
 
 end
