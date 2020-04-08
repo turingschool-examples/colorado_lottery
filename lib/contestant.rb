@@ -3,7 +3,8 @@ class Contestant
               :last_name,
               :age,
               :state_of_residence,
-              :spending_money
+              :spending_money,
+              :game_interests
 
   def initialize(contestant_info)
     @first_name = contestant_info[:first_name]
@@ -11,6 +12,7 @@ class Contestant
     @age = contestant_info[:age]
     @state_of_residence = contestant_info[:state_of_residence]
     @spending_money = contestant_info[:spending_money]
+    @game_interests = []
   end
 
   def full_name
@@ -23,6 +25,10 @@ class Contestant
     else
       true
     end
+  end
+
+  def add_game_interest(game)
+    @game_interests << game
   end
 
 end
