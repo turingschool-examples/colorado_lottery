@@ -1,4 +1,6 @@
-class Contestant
+require_relative './game'
+
+class Contestant < Game
 
   attr_reader :first_name, :last_name, :age, :state_of_residence, :spending_money, :full_name, :game_interests
 
@@ -17,7 +19,12 @@ class Contestant
   end
 
   def add_game_interest(name)
-    @game_interests << name
+    national_status = false
+    cost = 5 if name == 'Mega Millions'
+    cost = 2 if name == "Pick 4"
+    national_status = true if name == "Mega Millions"
+    current_interest = Game.new(name, cost, national_status)
+    @game_interests << current_interest.name
   end
 
 end
