@@ -38,7 +38,7 @@ class ContestantTest < Minitest::Test
     assert_equal "Alexander Aigiades", alexander.full_name
   end
 
-  def tests_if_contestant_is_out_of_state
+  def test_if_contestant_is_out_of_state
     alexander = Contestant.new({first_name: 'Alexander',
                                 last_name: 'Aigiades',
                                 age: 28,
