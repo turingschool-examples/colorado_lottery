@@ -61,10 +61,5 @@ class ColoradoLotteryTest < Minitest::Test
 
     @benjamin.add_game_interest('Mega Millions')
     assert_equal false, @lottery.interested_and_18?(@benjamin, @mega_millions)
-
-    # @frederick.add_game_interest('Mega Millions')
-
-    # @winston.add_game_interest('Cash 5')
-    # @winston.add_game_interest('Mega Millions')
   end
 end
