@@ -13,14 +13,16 @@ class Contestant
     @game_interests = []
   end
 
-  def out_of_state?(contestant)
-    if contestant.state_of_residence == 'CO'
+  def full_name
+    @first_name + " " +  @last_name
+  end
+
+  def out_of_state?
       false
-    end
   end
 
   def add_game_interest(game)
-    @game_interests << game 
+    @game_interests << game
   end
 
 end

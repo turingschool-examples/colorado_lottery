@@ -29,6 +29,15 @@ class ContestantTest < Minitest::Test
     assert_equal [], alexander.game_interests
   end
 
+  def test_it_can_read_full_name
+    alexander = Contestant.new({first_name: 'Alexander',
+                                          last_name: 'Aigiades',
+                                          age: 28,
+                                          state_of_residence: 'CO',
+                                          spending_money: 10})
+    assert_equal "Alexander Aigiades", alexander.full_name
+  end
+
   def test_it_can_tell_if_contestant_is_from_out_of_state
     alexander = Contestant.new({first_name: 'Alexander',
                                           last_name: 'Aigiades',
@@ -37,7 +46,7 @@ class ContestantTest < Minitest::Test
                                           spending_money: 10})
 
 
-    assert_equal false, alexander.out_of_state?(alexander)
+    assert_equal false, alexander.out_of_state?
   end
 
   def test_it_can_add_games_of_interest_to_array
