@@ -7,5 +7,13 @@ require 'pry'
 
 class ColoradoLotteryTest < MiniTest::Test
 
+  def test_it_exists
+    lottery = ColoradoLottery.new
+    assert_instance_of ColoradoLottery, lottery
+  end
+
+
+
+
 
 end
