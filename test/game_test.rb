@@ -19,7 +19,7 @@ class GameTest < Minitest::Test
     assert_equal 2, pick_4.cost
     assert_equal false, pick_4.national_drawing?
     assert_equal "Mega Millions", mega_millions.name
-    assert_equal 2, mega_millions.cost
+    assert_equal 5, mega_millions.cost
     assert_equal true, mega_millions.national_drawing?
   end
 end
