@@ -22,4 +22,14 @@ class ColoradoLottery
   def can_register?(contestant, game)
     interested_and_18?(contestant, game) && out_of_state_only_for_national(contestant, game)
   end
+
+  def register_contestant(contestant, game)
+    if can_register?(contestant, game) == true
+      if @registered_contestants[game.name] == nil
+        @registered_contestants[game.name] = [contestant]
+      elsif @registered_contestants[game.name] != nil
+      @registered_contestants[game.name] << contestant
+      end
+    end
+  end
 end
