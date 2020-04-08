@@ -54,7 +54,7 @@ class ContestantTest < Minitest::Test
                                       spending_money: 10})
       alexander.add_game_interest('Mega_Millions')
       alexander.add_game_interest('Pick_4')
-
+  # this test says it is failing but it appears to but returning the expected result
   assert_equal ["Mega Millions", "Pick 4"], alexander.game_interests
   end
 end
