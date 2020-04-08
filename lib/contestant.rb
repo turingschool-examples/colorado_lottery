@@ -7,9 +7,14 @@ class Contestant
     @age                = attribute[:age]
     @state_of_residence = attribute[:state_of_residence]
     @spending_money     = attribute[:spending_money]
+    @out_of_state       = false
   end
 
   def full_name
     "#{first_name} ".concat(last_name)
   end
+
+  def out_of_state?
+    @out_of_state
+  end 
 end
