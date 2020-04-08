@@ -19,6 +19,6 @@ class ContestantTest < Minitest::Test
 
   def test_it_has_attributes
     assert_equal "Alexander Aigiades", @alexander.full_name
-    assert_equal 
+    assert_equal 28, @alexander.age
   end
 end
