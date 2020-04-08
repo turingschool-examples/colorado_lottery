@@ -12,7 +12,7 @@ class GameTest < Minitest::Test
   end
 
   def test_it_exists
-    assert_instance_of Game, @pick4
+    assert_instance_of Game, @pick_4
     assert_instance_of Game, @mega_millions
   end
 
