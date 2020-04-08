@@ -34,6 +34,8 @@ class ColoradoLottery
   end
 
   def eligible_contestants(game)
-    @registered_contestants[game.name]
-  end 
+    @registered_contestants[game.name].find_all do |contestant|
+      contestant.spending_money >= game.cost
+    end 
+  end
 end
