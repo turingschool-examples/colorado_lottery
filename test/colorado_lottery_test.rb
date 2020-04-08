@@ -30,11 +30,17 @@ class ColoradoLotteryTest < MiniTest::Test
                        state_of_residence: 'NY',
                        spending_money: 20})
     @winston = Contestant.new({
-                     first_name: 'Winston',
-                     last_name: 'Churchill',
-                     age: 18,
-                     state_of_residence: 'CO',
-                     spending_money: 5})
+                       first_name: 'Winston',
+                       last_name: 'Churchill',
+                       age: 18,
+                       state_of_residence: 'CO',
+                       spending_money: 5})
+    @grace = Contestant.new({
+                       first_name: 'Grace',
+                       last_name: 'Hopper',
+                       age: 20,
+                       state_of_residence: 'CO',
+                       spending_money: 20})
 
     @alexander.add_game_interest('Pick 4')
     @alexander.add_game_interest('Mega Millions')
@@ -42,6 +48,9 @@ class ColoradoLotteryTest < MiniTest::Test
     @winston.add_game_interest('Cash 5')
     @winston.add_game_interest('Mega Millions')
     @benjamin.add_game_interest('Mega Millions')
+    @grace.add_game_interest('Mega Millions')
+    @grace.add_game_interest('Cash 5')
+    @grace.add_game_interest('Pick 4')
   end
 
   def test_existence
@@ -80,6 +89,20 @@ class ColoradoLotteryTest < MiniTest::Test
     assert_equal [@alexander, @frederick, @winston], @lottery.registered_contestants["Mega Millions"]
     assert_equal [@winston], @lottery.registered_contestants["Cash 5"]
     assert_equal 3, @lottery.registered_contestants.keys.length
+  end
+
+  def test_contestant_eligibility
+    @lottery.register_contestant(@alexander, @pick_4)
+    @lottery.register_contestant(@alexander, @mega_millions)
+    @lottery.register_contestant(@frederick, @mega_millions)
+    @lottery.register_contestant(@winston, @cash_5)
+    @lottery.register_contestant(@winston, @mega_millions)
+    @lottery.register_contestant(@grace, @mega_millions)
+    @lottery.register_contestant(@grace, @cash_5)
+    @lottery.register_contestant(@grace, @pick_4)
+    assert_equal [@alexander, @grace], @lottery.eligible_contestants(@pick_4)
+    assert_equal [@winston, @grace], @lottery.eligible_contestants(@cash_5)
+    assert_equal [@alexander, @frederick, @winston, @grace], @lottery.eligible_contestants(@mega_millions)
   end
 
 end
