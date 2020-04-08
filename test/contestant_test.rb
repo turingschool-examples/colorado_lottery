@@ -22,6 +22,7 @@ class ContestantTest < Minitest::Test
     assert_equal 28, @alexander.age
     assert_equal 'CO', @alexander.state_of_residence
     assert_equal 10, @alexander.spending_money
+    assert_equal [], @alexander.game_interest
   end
 
   def test_full_name
