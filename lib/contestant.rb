@@ -1,5 +1,6 @@
 class Contestant
-  attr_reader :first_name, :last_name, :age, :state_of_residence, :spending_money, :out_of_state
+  attr_reader :first_name, :last_name, :age, :state_of_residence,
+              :spending_money, :out_of_state, :game_interests
   def initialize(info, out_of_state = false)
     @first_name = info[:first_name]
     @last_name = info[:last_name]
@@ -7,6 +8,7 @@ class Contestant
     @state_of_residence = info[:state_of_residence]
     @spending_money = info[:spending_money]
     @out_of_state = out_of_state
+    @game_interests = []
   end
 
   def out_of_state?
