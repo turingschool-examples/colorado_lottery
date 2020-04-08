@@ -119,7 +119,12 @@ class ColoradoLotteryTest < MiniTest::Test
   end
 
   def test_charge_contestants
+    @lottery.register_contestant(@winston, @cash_5)
+    @lottery.register_contestant(@grace, @cash_5)
+    @lottery.charge_contestants(@cash_5)
 
+    assert_equal 4, @winston.spending_money
+    assert_equal 19, @grace.spending_money
   end
 
 end
