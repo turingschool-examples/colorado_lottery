@@ -26,18 +26,14 @@ class ContestantTest < Minitest::Test
     assert_equal 10, @alexander.spending_money
   end
 
+  def test_it_returns_out_of_state
+    assert_eqaul false, @alexander.out_of_state?
+  end
+
 end
 
+
 #
-# #=> "Alexander Aigiades"
-#
-# #=> 28
-#
-# #=> "CO"
-#
-# #=> 10
-#
-#alexander.out_of_state?
 # #=> false
 #
 #alexander.game_interests
