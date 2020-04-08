@@ -4,7 +4,7 @@ require 'pry'
 require './lib/game'
 require './lib/contestant'
 require './lib/colorado_lottery'
-
+require "mocha/minitest"
 
 class ColoradoLotteryTest < Minitest::Test
 
@@ -156,8 +156,67 @@ class ColoradoLotteryTest < Minitest::Test
 
   end
 
+  def test_it_return_random_winner
+    @lottery.register_contestant(@alexander, @pick_4)
+    @lottery.register_contestant(@alexander, @mega_millions)
+    @lottery.register_contestant(@frederick, @mega_millions)
+    @lottery.register_contestant(@winston, @cash_5)
+    @lottery.register_contestant(@winston, @mega_millions)
+    @lottery.register_contestant(@grace, @mega_millions)
+    @lottery.register_contestant(@grace, @cash_5)
+    @lottery.register_contestant(@grace, @pick_4)
+    @lottery.charge_contestants(@cash_5)
+    @lottery.charge_contestants(@mega_millions)
+    @lottery.charge_contestants(@pick_4)
+    assert_equal "2020-04-07", @lottery.draw_winners
+    assert_equal Array, @lottery.winners.class
+    assert_equal Hash, @lottery.winners.first.class
+    assert_equal Hash, @lottery.winners.last.class
+    assert_equal 3, @lottery.winners.length
+    @lottery.stubs(:winner).returns("Grace Hopper")
+    expected = "Grace Hopper won the Pick 4 on 04/07"
+    assert_equal expected, @lottery.announce_winner("Pick 4")
+  end
 
 
 
 
 end
+
+
+# - Use TDD to update your `Lottery` class so that it responds to the following interaction pattern.
+# - All of the setup remains the same, make sure you have registered and charged contestants for all of the games.
+# - The #draw_winners method returns the date of the drawing as a string, and populates the #winners array with a random winner for each game based on available contestants
+# - Because the array for #winners will be populated randomly, we cannot guarantee its contents, but we can guarantee that it will be an array of hashes that is the same length as the number of games we have. An example, based on our setup, the return value could be:
+#
+# <code>
+# [{"Winston Churchill"=>"Cash 5"},
+# {"Frederick Douglas"=>"Mega Millions"},
+# {"Grace Hopper"=>"Pick 4"}]
+# </code>
+#
+# - To test the #announce_winner method, you will need to stub the return value of #winners.
+#
+# ```ruby
+#
+# #=>
+#
+# #=>
+#
+# #=>
+#
+# #=> Hash
+#
+# #=>
+#
+# # Based on the example return value of #winners above in the iteration 4 directions, the announce_winner method would then return the following:
+#
+#lottery.announce_winner("Pick 4")
+# #=> "Grace Hopper won the Pick 4 on 04/07"
+#
+#lottery.announce_winner("Cash 5")
+# #=> "Winston Churchill won the Cash 5 on 04/07"
+#
+#lottery.announce_winner("Mega Millions")
+# #=> "Frederick Douglas won the Mega Millions on 04/07"
+# ```
