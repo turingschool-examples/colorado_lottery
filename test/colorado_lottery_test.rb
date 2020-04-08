@@ -148,6 +148,12 @@ class ColoradoLotteryTest < Minitest::Test
 
     result = [@alexander, grace]
     assert_equal result, @lottery.eligible_contestants(@pick_4)
+
+    result2 = [@winston, grace]
+    assert_equal result2, @lottery.eligible_contestants(@cash_5)
+
+    result3 = [@alexander, @frederick, @winston, grace]
+    assert_equal result3, @lottery.eligible_contestants(@mega_millions)
   end
 
 end
