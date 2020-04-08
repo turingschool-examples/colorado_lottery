@@ -49,6 +49,17 @@ class ColoradoLottery
     eligible.find_all do |contestant|
       contestant.spending_money > game.cost
     end
-    end
+  end
 
+  def charge_contestants(game)
+    contestants = eligible_contestants(game).map do |contestant|
+        "#{contestant.first_name} #{contestant.last_name}"
+      end
+      @current_contestants[game] = contestants
+
+    # charge = eligible_contestants(game).map do |contestant|
+    #   (contestant.spending_money -= game.cost)
+    # end
+    # charge
+  end
 end

@@ -144,6 +144,27 @@ class ColoradoLotteryTest < Minitest::Test
     assert_equal [@grace, @alexander], @lottery.eligible_contestants(@pick_4)
     assert_equal [@grace, @winston], @lottery.eligible_contestants(@cash_5)
     assert_equal [@grace, @frederick, @alexander], @lottery.eligible_contestants(@mega_millions)
+  end
 
+  def test_it_can_charge_contestants
+    @grace.add_game_interest('Mega Millions')
+    @grace.add_game_interest('Cash 5')
+    @grace.add_game_interest('Pick 4')
+    @lottery.register_contestant(@grace, @mega_millions)
+    @lottery.register_contestant(@grace, @cash_5)
+    @lottery.register_contestant(@grace, @pick_4)
+
+    @lottery.register_contestant(@frederick, @mega_millions)
+    @lottery.register_contestant(@winston, @cash_5)
+    @lottery.register_contestant(@winston, @mega_millions)
+
+    @lottery.register_contestant(@alexander, @pick_4)
+    @lottery.register_contestant(@alexander, @mega_millions)
+
+    @lottery.charge_contestants(@cash_5)
+    current_contestants = { @cash_5 => ["Grace Hopper", "Winston Churchill"] }
+    assert_equal current_contestants, @lottery.current_contestants
+
+    # assert_equal 19, @grace.spending_money
   end
 end
