@@ -2,7 +2,7 @@ class ColoradoLottery
 
   attr_reader :registered_contestants, :winners, :current_contestants
   def initialize()
-    @registered_contestants = {}
+    @registered_contestants = Hash.new { |hash, key| hash[key] = [] }
     @winners = []
     @current_contestants = {}
   end
@@ -19,6 +19,12 @@ class ColoradoLottery
       true
     else
       false
-    end 
+    end
+  end
+
+  def register_contestant(contestant, game)
+    if can_register?(contestant, game)
+      @registered_contestants[game.name] << contestant
+    end
   end
 end
