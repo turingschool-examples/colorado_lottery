@@ -25,4 +25,17 @@ class ColoradoLotteryTest < Minitest::Test
     assert_equal [], @lottery.winners
     assert_equal ({}), @lottery.current_contestants
   end
+
+  def test_it_can_be_interest_and_of_age
+    @alexander.add_game_interest('Pick 4')
+    @alexander.add_game_interest('Mega Millions')
+    @frederick.add_game_interest('Mega Millions')
+    @winston.add_game_interest('Cash 5')
+    @winston.add_game_interest('Mega Millions')
+    @benjamin.add_game_interest('Mega Millions')
+
+    assert_equal true, @lottery.interested_and_18?(@alexander, @pick_4)
+    assert_equal false, @lottery.interested_and_18?(@benjamin, @mega_millions)
+    assert_equal false, @lottery.interested_and_18?(@alexander, @cash_5)
+  end
 end
