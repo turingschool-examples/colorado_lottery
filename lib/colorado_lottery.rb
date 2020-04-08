@@ -24,4 +24,17 @@ class ColoradoLottery
       return true
     end
   end
+
+  def register_contestant(contestant, game_name)
+    @registered_contestants[game_name] = contestant
+  end
+
+  def eligible_contestants(game_name)
+    eligible_contestants = []
+    @registered_contestants.each do |contestant|
+      eligible_contestants << contestant
+      require "pry"; binding.pry
+    end
+    eligible_contestants
+  end
 end
