@@ -7,11 +7,15 @@ class Contestant
     @age = info[:age]
     @spending_money = info[:spending_money]
     @state_of_residence = info[:state_of_residence]
+    @out_of_state = false
   end
 
   def full_name
     @first_name + " " + @last_name
   end
 
-  
+  def out_of_state?
+    @out_of_state
+  end
+
 end
