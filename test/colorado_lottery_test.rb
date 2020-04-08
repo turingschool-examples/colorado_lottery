@@ -58,10 +58,9 @@ class ColoradoLotteryTest < Minitest::Test
     @winston.add_game_interest('Cash 5')
     @winston.add_game_interest('Mega Millions')
     @benjamin.add_game_interest('Mega Millions')
-    assert_equal true, @lottery.interested_and_18?(alexander, pick_4)
-    assert_equal false, @lottery.interested_and_18?(benjamin, mega_millions)
-    assert_equal false, @lottery.interested_and_18?(alexander, cash_5)
-
+    assert_equal true, @lottery.interested_and_18?(@alexander, @pick_4)
+    assert_equal false, @lottery.interested_and_18?(@benjamin, @mega_millions)
+    assert_equal false, @lottery.interested_and_18?(@alexander, @cash_5)
   end
 
 
