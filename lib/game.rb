@@ -8,4 +8,8 @@ class Game
     @cost = cost
     @national_drawing = national_drawing
   end
+
+  def national_drawing?
+    @national_drawing
+  end
 end
