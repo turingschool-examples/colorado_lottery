@@ -138,6 +138,7 @@ end
     benjamin.add_game_interest('Mega Millions')
 
     lottery.register_contestant(alexander, pick_4)
-    assert_equal [{"Pick 4"=> [alexander]}]  ,lottery.registered_contestants
-  end 
+    registered = {"Pick 4" => [alexander]}
+    assert_equal registered, lottery.registered_contestants
+  end
 end
