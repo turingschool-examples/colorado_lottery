@@ -1,6 +1,6 @@
 require "./lib/contestant"
 require "./lib/game"
-require 'colorado_lottery'
+require './lib/colorado_lottery'
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'pry'
@@ -16,9 +16,9 @@ class ColoradoLotteryTest < MiniTest::Test
     skip
     lottery = ColoradoLottery.new
 
-    assert_equal {}, lottery.registered_contestants
-    assert_equal {}, lottery.current_contestants
-    #assert_equal [], lottery.winners
+    assert_equal ({}), lottery.registered_contestants
+    assert_equal ({}), lottery.current_contestants
+    assert_equal [], lottery.winners
   end
 
   def test_contestant_is_interested_and_legal_age
