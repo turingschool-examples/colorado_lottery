@@ -93,7 +93,7 @@ end
     winston.add_game_interest('Cash 5')
     winston.add_game_interest('Mega Millions')
     benjamin.add_game_interest('Mega Millions')
-
+    
     assert_equal true, lottery.can_register?(alexander, pick_4)
     assert_equal false, lottery.can_register?(alexander, cash_5)
     assert_equal true, lottery.can_register?(frederick, mega_millions)
