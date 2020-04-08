@@ -15,6 +15,10 @@ class Contestant
     @out_of_state
   end
 
+  def add_game_interest(interest)
+    @game_interests << interest
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
