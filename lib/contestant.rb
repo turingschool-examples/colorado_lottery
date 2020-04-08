@@ -18,4 +18,8 @@ class Contestant
   def out_of_state?
     @out_of_state
   end
+
+  def add_game_interest(game)
+    @game_interests << game
+  end
 end
