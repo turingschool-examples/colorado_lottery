@@ -161,6 +161,4 @@ class ColoradoLotteryTest < MiniTest::Test
      assert_equal ({{'Pick4'=> [alexander,grace], "Mega Millions"=>[frederick,winston,grace], "Cash 5"=>[winston,grace]}), lottery.registered_contestants
     end
 
-
-
 end
