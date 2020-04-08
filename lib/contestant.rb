@@ -16,4 +16,8 @@ class Contestant
     @state_of_residence != 'CO'
   end
 
+  def add_game_interest(name)
+    @game_interests << name
+  end
+
 end
