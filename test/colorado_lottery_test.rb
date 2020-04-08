@@ -221,7 +221,11 @@ end
       winston.add_game_interest('Cash 5')
       winston.add_game_interest('Mega Millions')
       benjamin.add_game_interest('Mega Millions')
+      lottery.register_contestant(alexander, mega_millions)
+      lottery.register_contestant(frederick, mega_millions)
+      lottery.register_contestant(winston, mega_millions)
       lottery.register_contestant(alexander, pick_4)
+      lottery.register_contestant(winston, cash_5)
       grace = Contestant.new({
                             first_name: 'Grace',
                             last_name: 'Hopper',
@@ -236,10 +240,15 @@ end
       lottery.register_contestant(grace, pick_4)
       expected = [alexander, grace]
       assert_equal expected, lottery.eligible_contestants(pick_4)
-
-
+      expected = [winston, grace]
+      assert_equal  expected, lottery.eligible_contestants(cash_5)
+      expected = [alexander, frederick, winston, grace]
+      assert_equal expected, lottery.eligible_contestants(mega_millions)
+      lottery.charge_contestants(cash_5)
 
   end
+
+
 end
 
 
@@ -258,16 +267,9 @@ end
 #
 
 #
-# pry(main)> lottery.eligible_contestants(pick_4)
-# #=> [#<Contestant:0x007ffe95fab0b8...>,
-#  #<Contestant:0x007ffe99998190...>]
+
 #
-# pry(main)> lottery.eligible_contestants(cash_5)
-# #=> [#<Contestant:0x007ffe96db1180...>, #<Contestant:0x007ffe99998190...>]
-#
-# pry(main)> lottery.eligible_contestants(mega_millions)
-# #=> [#<Contestant:0x007ffe95fab0b8...>, #<Contestant:0x007ffe99848470...>, #<Contestant:0x007ffe99998190...>]
-#
+
 # pry(main)> lottery.charge_contestants(cash_5)
 #
 # pry(main)> lottery.current_contestants

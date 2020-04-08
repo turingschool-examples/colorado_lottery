@@ -21,17 +21,24 @@ class ColoradoLottery
      if registered_contestants[game.name] == nil #&& (contestant.spending_money > game.cost)
       registered_contestants[game.name] = []
       registered_contestants[game.name] << contestant
-      contestant.charge_contestant(game.cost)
+      #contestant.charge_contestant(game.cost)
     elsif #registered_contestants[game.name] != nil #&& (contestant.spending_money > game.cost)
       registered_contestants[game.name] << contestant
-      contestant.charge_contestant(game.cost)
+      #contestant.charge_contestant(game.cost)
     end
   end
 
-  def eligible_contestants(pick_4)
-    
+  def eligible_contestants(game)
+    contestants = registered_contestants[game.name]
+    contestants
+  end
 
+  def charge_contestants(game)
 
+    registered_contestants.map do |contestant|
+require"pry";binding.pry
+    contestant.spending_money -= game.cost
+    end
   end
 
 

@@ -23,9 +23,7 @@ class Contestant
     "#{first_name} #{last_name}"
   end
 
-  def charge_contestant(charge)
-    @spending_money -= charge
-  end
+
 
 
 
