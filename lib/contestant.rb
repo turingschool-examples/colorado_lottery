@@ -3,8 +3,8 @@ class Contestant
   attr_reader :full_name,
               :age,
               :state_of_residence,
-              :spending_money,
               :game_interests
+  attr_accessor :spending_money
   def initialize(information)
     @full_name = information[:first_name] + " " + information[:last_name]
     @age = information[:age]
