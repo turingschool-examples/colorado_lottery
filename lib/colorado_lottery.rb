@@ -25,4 +25,9 @@ class ColoradoLottery
       false
     end
   end
+
+  def register_contestant(contestant)
+    require "pry"; binding.pry
+
+  end
 end
