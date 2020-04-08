@@ -17,5 +17,13 @@ class ColoradoLotteryTest < Minitest::Test
   def test_it_starts_with_no_registered_contestants
     assert_equal ({}), @lottery.registered_contestants
   end
-  
+
+  def test_it_starts_with_no_winners
+    assert_equal [], @lottery.winners
+  end
+
+  def test_it_starts_with_no_current_contestants
+    assert_equal ({}), @lottery.current_contestants
+  end
+
 end
