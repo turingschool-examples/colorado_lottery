@@ -8,6 +8,7 @@ class Contestant
     @state_of_residence = attribute[:state_of_residence]
     @spending_money     = attribute[:spending_money]
     @out_of_state       = false
+    @game_interests     = []
   end
 
   def full_name
@@ -16,5 +17,9 @@ class Contestant
 
   def out_of_state?
     @out_of_state
-  end 
+  end
+
+  def game_interests
+    @game_interests
+  end
 end
