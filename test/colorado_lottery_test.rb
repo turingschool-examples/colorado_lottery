@@ -74,6 +74,11 @@ class ColoradoLotteryTest < Minitest::Test
     assert_equal false, @lottery.can_register?(@frederick, @cash_5)
   end
 
+  def test_out_of_state_only_for_national
+    assert_equal false, @lottery.out_of_state_only_for_national(@frederick, @cash_5)
+    assert_equal true, @lottery.out_of_state_only_for_national(@frederick, @mega_millions)
+  end
+
   def test_it_can_register_contestants
     @lottery.register_contestant(@alexander, @pick_4)
 
