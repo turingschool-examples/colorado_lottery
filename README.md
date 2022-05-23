@@ -125,7 +125,7 @@ pry(main)> benjamin = Contestant.new({
 
 pry(main)> frederick = Contestant.new({
                        first_name:  'Frederick',
-                       last_name: 'Douglas',
+                       last_name: 'Douglass',
                        age: 55,
                        state_of_residence: 'NY',
                        spending_money: 20})
@@ -245,7 +245,7 @@ pry(main)> lottery.charge_contestants(mega_millions)
 
 pry(main)> lottery.current_contestants
 #=> {#<Game:0x007f8a32295360...> => ["Winston Churchill", "Grace Hopper"],
- #<Game:0x007f8a322ad5a0...> => ["Alexander Aigades", "Frederick Douglas", "Grace Hopper"]}
+ #<Game:0x007f8a322ad5a0...> => ["Alexander Aigades", "Frederick Douglass", "Grace Hopper"]}
 
 pry(main)> grace.spending_money
 #=> 14
@@ -263,7 +263,7 @@ pry(main)> lottery.charge_contestants(pick_4)
 
 pry(main)> lottery.current_contestants
 #=> {#<Game:0x007f8a32295360...> => ["Winston Churchill", "Grace Hopper"],
-#<Game:0x007f8a322ad5a0...> => ["Alexander Aigades", "Frederick Douglas", "Grace Hopper"],
+#<Game:0x007f8a322ad5a0...> => ["Alexander Aigades", "Frederick Douglass", "Grace Hopper"],
 #<Game:0x007f8a317b5e40...> => ["Alexander Aigades", "Grace Hopper"]}
 ```
 
@@ -276,7 +276,7 @@ pry(main)> lottery.current_contestants
 
 <code>
 [{"Winston Churchill"=>"Cash 5"},
-{"Frederick Douglas"=>"Mega Millions"},
+{"Frederick Douglass"=>"Mega Millions"},
 {"Grace Hopper"=>"Pick 4"}]
 </code>
 
@@ -308,5 +308,5 @@ pry(main)> lottery.announce_winner("Cash 5")
 #=> "Winston Churchill won the Cash 5 on 04/07"
 
 pry(main)> lottery.announce_winner("Mega Millions")
-#=> "Frederick Douglas won the Mega Millions on 04/07"
+#=> "Frederick Douglass won the Mega Millions on 04/07"
 ```
