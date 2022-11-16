@@ -157,7 +157,42 @@ RSpec.describe ColoradoLottery do
       @pick_4 => ["Alexander Aigades", "Grace Hopper"]
     }
     expect(@lottery.current_contestants).to eq(expected)
-    
   end
 
+  describe "iteration 4" do
+    before :each do
+      @lottery.register_contestant(@alexander, @pick_4)
+      @lottery.register_contestant(@alexander, @mega_millions)
+      @lottery.register_contestant(@frederick, @mega_millions)
+      @lottery.register_contestant(@winston, @cash_5)
+      @lottery.register_contestant(@winston, @mega_millions)
+      @grace = Contestant.new({
+                           first_name: 'Grace',
+                           last_name: 'Hopper',
+                           age: 20,
+                           state_of_residence: 'CO',
+                           spending_money: 20})
+      @grace.add_game_interest("Mega Millions")
+      @grace.add_game_interest("Cash 5")
+      @grace.add_game_interest("Pick 4")
+      @lottery.register_contestant(@grace, @mega_millions)
+      @lottery.register_contestant(@grace, @cash_5)
+      @lottery.register_contestant(@grace, @pick_4)
+      @lottery.charge_contestants(@cash_5)
+      @lottery.charge_contestants(@mega_millions)
+      @lottery.charge_contestants(@pick_4)
+    end
+
+    it "can draw_winners, which returns current date and populates winner into winners hash" do
+      expect(@lottery.draw_winners).to eq(Time.now.strftime("%Y/%m/%d"))
+      expect(@lottery.winners.class).to eq(Array)
+      expect(@lottery.winners.first.class).to eq(Hash)
+      expect(@lottery.winners.last.class).to eq(Hash)
+      expect(@lottery.winners.count).to eq(3)
+    end
+
+    it "can announce winners of each game" do
+      expect(@lottery.announce_winner("Pick 4")).to include("won the Pick 4 on #{Time.now.strftime("%Y/%m/%d")}")
+    end
+  end
 end

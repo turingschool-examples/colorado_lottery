@@ -46,9 +46,27 @@ class ColoradoLottery
       if contestant.spending_money >= game.cost
         @current_contestants[game] << contestant.full_name
         contestant.spending_money -= game.cost
-      end 
+      end
     end
     @current_contestants
+  end
+
+  def draw_winners
+    @current_contestants.each do |game, contestants|
+      @winners << {game.name => contestants.sample}
+    end
+    Time.now.strftime("%Y/%m/%d")
+  end
+
+  def announce_winner(game)
+    draw_winners
+    print_winner = ""
+    @winners.select do |winner|
+      if winner.keys.first == game
+        print_winner = "#{winner.values.first} won the #{winner.keys.first} on #{Time.now.strftime("%Y/%m/%d")}"
+      end
+    end
+    print_winner
   end
 
 end
