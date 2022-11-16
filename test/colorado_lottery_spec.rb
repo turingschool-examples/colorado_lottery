@@ -192,7 +192,7 @@ RSpec.describe ColoradoLottery do
     end
 
     it "can announce winners of each game" do
-      expect(@lottery.announce_winner("Pick 4")).to include("won the Pick 4 on #{Time.now.strftime("%Y/%m/%d")}")
+      expect(@lottery.announce_winner("Pick 4")).to eq("Alexander Aigades won the Pick 4 on #{Time.now.strftime("%Y/%m/%d")}").or eq("Grace Hopper won the Pick 4 on #{Time.now.strftime("%Y/%m/%d")}")
     end
   end
 end
